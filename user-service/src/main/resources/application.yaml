@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: user-service
+  datasource:
+    url: jdbc:postgresql://localhost:5432/hassl_space_db
+    username: admin
+    password: admin
+    driver-class-name: org.postgresql.Driver
+#  liquibase:
+#    enabled: false
