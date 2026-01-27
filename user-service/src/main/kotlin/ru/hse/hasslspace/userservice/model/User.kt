@@ -6,8 +6,8 @@ import org.springframework.data.relational.core.mapping.Table
 import org.springframework.security.core.GrantedAuthority
 import org.springframework.security.core.userdetails.UserDetails
 import ru.hse.hasslspace.userservice.model.User.Companion.TABLE_NAME
+import java.util.*
 import java.util.Collections.emptyList
-import java.util.UUID
 
 @Table(TABLE_NAME)
 data class User(

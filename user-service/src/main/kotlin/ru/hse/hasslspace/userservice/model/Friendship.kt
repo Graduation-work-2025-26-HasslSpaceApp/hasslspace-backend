@@ -1,13 +1,11 @@
 package ru.hse.hasslspace.userservice.model
 
-import org.apache.coyote.Request
 import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
 import ru.hse.hasslspace.userservice.model.Friendship.Companion.TABLE_NAME
-import ru.hse.hasslspace.userservice.model.Verification.Companion.ID_COLUMN_NAME
 import java.time.LocalDateTime
-import java.util.UUID
+import java.util.*
 
 @Table(name = TABLE_NAME)
 data class Friendship(
@@ -15,7 +13,7 @@ data class Friendship(
     @Column(ID_COLUMN_NAME)
     val id: UUID? = null,
 
-@Column(REQUESTER_ID_COLUMN_NAME)
+    @Column(REQUESTER_ID_COLUMN_NAME)
     val requesterId: UUID,
 
     @Column(ADDRESSEE_ID_COLUMN_NAME)
