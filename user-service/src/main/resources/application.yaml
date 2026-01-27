@@ -2,9 +2,13 @@ spring:
   application:
     name: user-service
   datasource:
-    url: jdbc:postgresql://localhost:5432/hassl_space_db
-    username: admin
-    password: admin
+    url: jdbc:postgresql://{DEV_ENV_HOST}:5432/{DEV_ENV_DB_NAME}
+    username: {DEV_ENV_DB_USER}
+    password: {DEV_ENV_DB_PASSWORD}
     driver-class-name: org.postgresql.Driver
 #  liquibase:
 #    enabled: false
+
+jwt:
+  secret: {JWT_SECRET}
+  expiration: {JWT_EXPIRATION}
