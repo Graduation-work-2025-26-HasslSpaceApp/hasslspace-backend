@@ -14,7 +14,7 @@ data class Verification(
     val id: UUID? = null,
 
     @Column(USER_ID_COLUMN_NAME)
-    val userId: String,
+    val userId: UUID,
 
     @Column(CODE_COLUMN_NAME)
     val code: String,

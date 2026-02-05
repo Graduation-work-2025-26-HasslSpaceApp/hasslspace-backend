@@ -16,7 +16,7 @@ data class User(
     val id: UUID? = null,
 
     @Column(USERNAME_COLUMN_NAME)
-    var username: String,
+    private var username: String,
 
     @Column(NAME_COLUMN_NAME)
     var name: String,
@@ -25,7 +25,7 @@ data class User(
     val email: String,
 
     @Column(PASSWORD_COLUMN_NAME)
-    val password: String,
+    private val password: String?,
 
     @Column(PHOTO_URL_COLUMN_NAME)
     var photoUrl: String? = null,
@@ -34,7 +34,7 @@ data class User(
     var userInfo: String? = null,
 
     @Column(STATUS_COLUMN_NAME)
-    var status: List<StatusType>? = listOf(StatusType.ONLINE),
+    var status: StatusType = StatusType.ONLINE,
 
     @Column(ROLES_COLUMN_NAME)
     val roles: List<AuthorityType>? = listOf(AuthorityType.DEFAULT),
