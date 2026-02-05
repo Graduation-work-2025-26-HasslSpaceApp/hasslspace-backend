@@ -39,3 +39,6 @@ out/
 ### Kotlin ###
 .kotlin
 /user-service/src/main/resources/application-dev-env.yaml
+
+**/application-dev-env.yaml
+
