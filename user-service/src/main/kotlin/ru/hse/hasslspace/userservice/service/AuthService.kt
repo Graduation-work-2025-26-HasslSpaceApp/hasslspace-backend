@@ -59,7 +59,7 @@ class AuthService(
 
             logger.info("User with email ${registerUserDto.email} successfully registered")
 
-            sendVerificationCode(savedUser.id!!, savedUser.email, savedUser.username) //TODO: продолжить здесь
+            sendVerificationCode(savedUser.id!!, savedUser.email, savedUser.username)
 
             ResponseEntity.status(HttpStatus.CREATED).body(jwt)
         } catch (e: Exception) {

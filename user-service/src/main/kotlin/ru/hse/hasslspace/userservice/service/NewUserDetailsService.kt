@@ -12,7 +12,7 @@ class NewUserDetailsService(
 ) : UserDetailsService {
 
     override fun loadUserByUsername(username: String): UserDetails {
-        return userRepository.findUserByUsername(username) as User
+        return userRepository.findUserByUsername(username)
     }
 
     fun loadUserByEmail(email: String): UserDetails {
