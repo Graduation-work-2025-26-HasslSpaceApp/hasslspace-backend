@@ -103,7 +103,7 @@ class AuthService(
 
             val sendEmailResponse = notifierService.send(
                 EmailRequest(
-                    subject = "Код подтверждения для Пойдем.Daily",
+                    subject = "Код подтверждения для HasslSpace",
                     targetEmail = email,
                     text = verificationCode,
                     name = name
