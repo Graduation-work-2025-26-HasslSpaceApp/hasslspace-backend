@@ -10,3 +10,6 @@ const val SEND_VERIFICATION_CODE_URL = "/users/me/verification"
 const val VERIFY_CODE_URL = "/users/me/verification/confirm"
 const val IS_VERIFIED_URL = "/users/me/verification/status"
 
+const val GET_PROFILE_URL = "/users/me"
+const val UPDATE_PROFILE_URL = "/users/me"
+const val UPDATE_STATUS_URL = "/users/me/status"
