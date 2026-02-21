@@ -20,3 +20,6 @@ const val FRIEND_REQUESTS_URL = "/users/me/friends"
 const val FRIEND_RESPONSE_URL = "/friends/me/response"
 const val BLOCK_USER_URL = "/users/block"
 const val DELETE_USER_URL = "/users/me/friends/delete"
+
+const val UPLOAD_PHOTO_URL = "/photos/user/upload"
+const val DOWNLOAD_PHOTO_URL = "/photos/user/download"
