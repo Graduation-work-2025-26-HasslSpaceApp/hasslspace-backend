@@ -16,7 +16,7 @@ interface UserRepository : CrudRepository<User, UUID> {
             where username = :username
         """
     )
-    fun findUserByUsername(username: String) : User
+    fun findUserByUsername(username: String) : User?
 
     @Query(
         """
@@ -48,4 +48,13 @@ interface UserRepository : CrudRepository<User, UUID> {
         """
     )
     fun findUserByEmail(email: String) : User
+
+    @Query(
+        """
+            select *
+            from public."user"
+            where id = :userId
+        """
+    )
+    fun findUserByUserId(userId: UUID) : User
 }

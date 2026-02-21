@@ -20,7 +20,7 @@ data class Friendship(
     val addresseeId: UUID,
 
     @Column(STATUS_COLUMN_NAME)
-    val status: FriendshipStatus? = FriendshipStatus.PENDING,
+    var status: FriendshipStatus? = FriendshipStatus.PENDING,
 
     @Column(CREATED_AT_COLUMN_NAME)
     val createdAt: LocalDateTime?
