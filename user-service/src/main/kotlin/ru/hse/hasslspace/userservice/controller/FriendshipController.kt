@@ -40,10 +40,10 @@ class FriendshipController(private val friendshipService: FriendshipService) {
     @PatchMapping(FRIEND_RESPONSE_URL)
     fun updateFriendResponse(
         @AuthenticationPrincipal user: User,
-        @RequestParam friendshipId: UUID,
+        @RequestParam userId: UUID,
         @RequestParam status: String
     ): ResponseEntity<String> =
-        friendshipService.updateFriendResponse(user, friendshipId, status)
+        friendshipService.updateFriendResponse(user, userId, status)
 
     @PostMapping(BLOCK_USER_URL)
     fun blockUser(

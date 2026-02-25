@@ -107,9 +107,9 @@ class FriendshipService(
     }
 
     @Transactional
-    fun updateFriendResponse(user: User, friendshipId: UUID, status: String): ResponseEntity<String> {
+    fun updateFriendResponse(user: User, userId: UUID, status: String): ResponseEntity<String> {
         return try {
-            val friendship = friendshipRepository.findFriendshipById(friendshipId)
+            val friendship = friendshipRepository.findFriendshipBetweenUsers(user.id!!, userId)
                 ?: return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Запрос дружбы не найден")
 
             if (friendship.addresseeId != user.id) {
@@ -120,10 +120,10 @@ class FriendshipService(
                 friendship.apply { this.status = Friendship.FriendshipStatus.valueOf(status) }
             )
 
-            logger.info("Friend response for user ${user.id} and friendship $friendshipId successfully updated to $status")
+            logger.info("Friend response for user ${user.id} and user $userId successfully updated to $status")
             ResponseEntity.status(HttpStatus.OK).body("Ответ на запрос дружбы успешно обновлен")
         } catch (e: Exception) {
-            logger.error("Error while updating friend response for user ${user.id} and friendship $friendshipId")
+            logger.error("Error while updating friend response for user ${user.id} and user $userId")
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ошибка при обновлении ответа на запрос дружбы")
         }
     }
