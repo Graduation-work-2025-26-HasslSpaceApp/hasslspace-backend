@@ -1,6 +1,8 @@
 package ru.hse.hasslspace.serverservice.model
 
+import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
+import org.springframework.data.relational.core.mapping.Embedded
 import org.springframework.data.relational.core.mapping.Table
 import ru.hse.hasslspace.serverservice.model.ServerMember.Companion.TABLE_NAME
 import java.time.LocalDateTime
@@ -8,11 +10,8 @@ import java.util.*
 
 @Table(TABLE_NAME)
 data class ServerMember(
-    @Column(SERVER_ID_COLUMN_NAME)
-    val serverId: UUID,
-
-    @Column(USER_ID_COLUMN_NAME)
-    val userId: UUID,
+    @Id
+    val id: ServerMemberId,
 
     @Column(JOINED_AT_COLUMN_NAME)
     val joinedAt: LocalDateTime?,
@@ -20,6 +19,14 @@ data class ServerMember(
     @Column(NAME_COLUMN_NAME)
     var name: String? = null
 ) {
+
+    data class ServerMemberId(
+//        @Column(SERVER_ID_COLUMN_NAME)
+        val serverId: UUID,
+
+//        @Column(USER_ID_COLUMN_NAME)
+        val userId: UUID
+    )
 
     companion object {
         const val TABLE_NAME = "server_member"
