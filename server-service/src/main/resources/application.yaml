@@ -8,3 +8,8 @@ spring:
     driver-class-name: org.postgresql.Driver
 #  liquibase:
 #    enabled: true
+#logging:
+#  level:
+#    org.springframework.jdbc.core: DEBUG
+
+invite_base_url: ${DEV_ENV_INVITE_URL}

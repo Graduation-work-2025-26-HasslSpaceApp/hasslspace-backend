@@ -17,4 +17,15 @@ interface ServerRoleRepository : CrudRepository<ServerRole, UUID> {
         """
     )
     fun findAllRolesById(roleIds: List<UUID>): List<ServerRole>
+
+    @Query(
+        """
+            select *
+            from server_role
+            where server_id = :serverId
+              and is_default = true
+            limit 1
+        """
+    )
+    fun findDefaultRoleByServerId(serverId: UUID): ServerRole?
 }

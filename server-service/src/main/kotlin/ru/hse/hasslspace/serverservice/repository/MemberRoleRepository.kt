@@ -1,12 +1,12 @@
 package ru.hse.hasslspace.serverservice.repository
 
+import org.springframework.data.jdbc.repository.query.Modifying
 import org.springframework.data.jdbc.repository.query.Query
 import org.springframework.data.repository.CrudRepository
-import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Repository
 import ru.hse.hasslspace.serverservice.model.MemberRole
 import ru.hse.hasslspace.serverservice.model.MemberRole.MemberRoleId
-import java.util.UUID
+import java.util.*
 
 @Repository
 interface MemberRoleRepository : CrudRepository<MemberRole, MemberRoleId> {
@@ -28,4 +28,13 @@ interface MemberRoleRepository : CrudRepository<MemberRole, MemberRoleId> {
         where server_id = :serverId and user_id = :userId
     """)
     fun findRoleIdsByServerIdAndUserId(serverId: UUID, userId: UUID): List<UUID>
+
+    @Modifying
+    @Query(
+        """
+            delete from member_role
+            where server_id = :serverId and user_id = :userId
+        """
+    )
+    fun deleteByServerIdAndUserId(serverId: UUID, userId: UUID): Int
 }

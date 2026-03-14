@@ -2,6 +2,7 @@ package ru.hse.hasslspace.serverservice.dto.converter
 
 import org.springframework.stereotype.Component
 import ru.hse.hasslspace.serverservice.dto.ServerInfoExpandedDto
+import ru.hse.hasslspace.serverservice.dto.ServerMemberDto
 import ru.hse.hasslspace.serverservice.model.Channel
 import ru.hse.hasslspace.serverservice.model.Server
 import ru.hse.hasslspace.serverservice.model.ServerMember
@@ -14,7 +15,7 @@ class ServerToServerInfoExpandedDtoConverter {
 
     fun convert(
         server: Server,
-        memberDtos: List<ServerInfoExpandedDto.ServerMemberDto>,
+        memberDtos: List<ServerMemberDto>,
         userId: UUID,
         textChannelDtos: List<ServerInfoExpandedDto.TextChannelDto>,
         voiceChannelDtos: List<ServerInfoExpandedDto.VoiceChannelDto>
@@ -33,10 +34,10 @@ class ServerToServerInfoExpandedDtoConverter {
         member: ServerMember,
         user: User,
         roles: List<ServerRole>
-    ): ServerInfoExpandedDto.ServerMemberDto {
+    ): ServerMemberDto {
         val memberName = member.name ?: user.username
 
-        return ServerInfoExpandedDto.ServerMemberDto(
+        return ServerMemberDto(
             id = member.id.userId.toString(),
             name = memberName,
             username = user.username,
@@ -46,9 +47,9 @@ class ServerToServerInfoExpandedDtoConverter {
         )
     }
 
-    private fun toRoleDtos(roles: List<ServerRole>): List<ServerInfoExpandedDto.ServerMemberDto.ServerRoleDto> {
+    private fun toRoleDtos(roles: List<ServerRole>): List<ServerMemberDto.ServerRoleDto> {
         return roles.map { role ->
-            ServerInfoExpandedDto.ServerMemberDto.ServerRoleDto(
+            ServerMemberDto.ServerRoleDto(
                 id = role.id.toString(),
                 name = role.name,
                 color = role.color ?: DEFAULT_ROLE_COLOR
