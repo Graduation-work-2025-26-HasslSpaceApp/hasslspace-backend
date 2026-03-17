@@ -12,3 +12,6 @@ const val SERVERS_MEMBERS_NOT_IN_SERVER_URL = "/servers/members/not-in-server"
 
 const val SERVER_INVITES_URL = "/servers/invites"
 const val INVITES_JOIN_URL = "/invites/join"
+
+const val SERVERS_ROLES_URL = "/servers/roles"
+const val SERVERS_MEMBERS_ROLES_URL = "/servers/members/roles"

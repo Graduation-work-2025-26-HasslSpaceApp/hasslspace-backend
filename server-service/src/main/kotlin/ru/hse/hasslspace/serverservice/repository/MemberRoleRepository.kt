@@ -22,11 +22,13 @@ interface MemberRoleRepository : CrudRepository<MemberRole, MemberRoleId> {
     )
     fun save(memberRole: MemberRole): MemberRole
 
-    @Query("""
+    @Query(
+        """
         select role_id
         from member_role
         where server_id = :serverId and user_id = :userId
-    """)
+    """
+    )
     fun findRoleIdsByServerIdAndUserId(serverId: UUID, userId: UUID): List<UUID>
 
     @Modifying
@@ -37,4 +39,31 @@ interface MemberRoleRepository : CrudRepository<MemberRole, MemberRoleId> {
         """
     )
     fun deleteByServerIdAndUserId(serverId: UUID, userId: UUID): Int
+
+    @Query(
+        """
+        select *
+        from member_role
+        where role_id = :roleId
+    """
+    )
+    fun findAllByRoleId(roleId: UUID): List<MemberRole>
+
+    @Modifying
+    @Query(
+        """
+            delete from member_role
+            where role_id = :roleId
+        """
+    )
+    fun deleteByRoleId(roleId: UUID): Int
+
+    @Query(
+        """
+        select *
+        from member_role
+        where server_id = :serverId and user_id = :userId and role_id = :roleId
+    """
+    )
+    fun findByServerIdAndUserIdAndRoleId(serverId: UUID, userId: UUID, roleId: UUID): MemberRole?
 }
