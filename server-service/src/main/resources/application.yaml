@@ -13,3 +13,6 @@ spring:
 #    org.springframework.jdbc.core: DEBUG
 
 invite_base_url: ${DEV_ENV_INVITE_URL}
+
+server:
+  port: ${DEV_ENV_SERVER_PORT}
