@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - include:
+      relativeToChangelogFile: true
+      file: server.sql
+  - include:
+      relativeToChangelogFile: true
+      file: server_member.sql
+  - include:
+      relativeToChangelogFile: true
+      file: server_invite.sql
+  - include:
+      relativeToChangelogFile: true
+      file: server_role.sql
+  - include:
+      relativeToChangelogFile: true
+      file: member_role.sql
+  - include:
+      relativeToChangelogFile: true
+      file: channel.sql
+  - include:
+      relativeToChangelogFile: true
+      file: channel_permission.sql
+  - changeSet:
+      id: 01.000.00
+      author: aevsyukov_1@edu.hse.ru
+      logicalFilePath: 01.000.00/db.changelog.yaml
+      changes:
+        - tagDatabase:
+            tag: 01.000.00

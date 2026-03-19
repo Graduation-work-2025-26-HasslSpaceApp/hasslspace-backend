@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: notification-service
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_SENDER_USERNAME}
+    password: ${MAIL_SENDER_PASSWORD}
+    properties:
+      mail:
+        debug: true
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+#  kafka:
+#    topic:
+#      verify-user-email: verify-user-email
+#    bootstrap-servers: ${DEV_ENV_HOST_KAFKA}:${DEV_ENV_PORT_KAFKA}
+#    consumer:
+#      group-id: notification-service
+#      auto-offset-reset: earliest
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#      properties:
+#        spring:
+#          json:
+#            trusted:
+#              packages: '*'
+
+server:
+  port: 8083
+
+#management:
+#  endpoints.web.exposure.include: 'prometheus, health, info, metrics'
+#  metrics:
+#    enable:
+#      all: true
+#    distribution:
+#      percentiles-histogram:
+#        "[http.server.requests]": true
+#  prometheus:
+#    metrics:
+#      export:
+#        enabled: true
