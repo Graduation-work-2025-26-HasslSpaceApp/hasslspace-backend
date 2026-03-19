@@ -39,4 +39,4 @@ out/
 ### Kotlin ###
 .kotlin
 
-application-dev-env.yaml
+**/application-dev-env.yaml
