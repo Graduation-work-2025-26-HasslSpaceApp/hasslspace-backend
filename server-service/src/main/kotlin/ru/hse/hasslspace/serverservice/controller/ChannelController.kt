@@ -1,0 +1,42 @@
+package ru.hse.hasslspace.serverservice.controller
+
+import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.*
+import ru.hse.hasslspace.serverservice.dto.ChannelDto
+import ru.hse.hasslspace.serverservice.dto.CreateChannelRequest
+import ru.hse.hasslspace.serverservice.service.ChannelService
+import java.util.*
+
+@RestController
+@RequestMapping(SERVER_SERVICE_BASE_PATH_URL)
+class ChannelController(
+    private val channelService: ChannelService
+) {
+
+    @PostMapping(SERVERS_CHANNELS_URL)
+    fun createChannel(
+        @RequestHeader(USER_ID_HEADER) userId: UUID,
+        @RequestParam serverId: UUID,
+        @RequestBody request: CreateChannelRequest
+    ): ResponseEntity<String> {
+        return channelService.createChannel(userId, serverId, request)
+    }
+
+    @DeleteMapping(SERVERS_CHANNELS_URL)
+    fun deleteChannel(
+        @RequestHeader(USER_ID_HEADER) userId: UUID,
+        @RequestParam serverId: UUID,
+        @RequestParam channelId: UUID
+    ): ResponseEntity<String> {
+        return channelService.deleteChannel(userId, serverId, channelId)
+    }
+
+    @GetMapping(SERVERS_CHANNELS_URL)
+    fun getChannelInfo(
+        @RequestHeader(USER_ID_HEADER) userId: UUID,
+        @RequestParam serverId: UUID,
+        @RequestParam channelId: UUID
+    ): ResponseEntity<ChannelDto> {
+        return channelService.getChannelInfo(userId, serverId, channelId)
+    }
+}
