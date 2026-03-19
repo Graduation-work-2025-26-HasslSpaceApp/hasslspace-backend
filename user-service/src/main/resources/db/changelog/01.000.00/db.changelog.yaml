@@ -1,0 +1,10 @@
+databaseChangeLog:
+  - include:
+      relativeToChangelogFile: true
+      file: user.sql
+  - include:
+      relativeToChangelogFile: true
+      file: verification.sql
+  - include:
+      relativeToChangelogFile: true
+      file: friendship.sql
