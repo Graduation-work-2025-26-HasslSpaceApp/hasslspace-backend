@@ -5,6 +5,7 @@ import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
+import ru.hse.hasslspace.serverservice.dto.CreateServerRequest
 import ru.hse.hasslspace.serverservice.dto.ServerInfoExpandedDto
 import ru.hse.hasslspace.serverservice.dto.ServersListDto
 import ru.hse.hasslspace.serverservice.dto.converter.ServerToServerInfoExpandedDtoConverter
@@ -30,16 +31,17 @@ class ServerService(
     private val memberRoleRepository: MemberRoleRepository,
     private val channelRepository: ChannelRepository,
     private val userRepository: UserRepository,
-    private val serverToServerInfoExpandedDtoConverter: ServerToServerInfoExpandedDtoConverter
+    private val serverToServerInfoExpandedDtoConverter: ServerToServerInfoExpandedDtoConverter,
 ) {
 
     @Transactional
-    fun createServer(ownerId: UUID, serverName: String, username: String): ResponseEntity<String> {
+    fun createServer(ownerId: UUID, request: CreateServerRequest): ResponseEntity<String> {
         return try {
             val savedServer = serverRepository.save(
                 Server(
-                    name = serverName,
+                    name = request.name,
                     ownerId = ownerId,
+                    iconUrl = request.iconUrl,
                     createdAt = LocalDateTime.now()
                 )
             )
@@ -69,7 +71,7 @@ class ServerService(
                         userId = ownerId
                     ),
                     joinedAt = LocalDateTime.now(),
-                    name = username
+                    name = userRepository.findUserByUserId(ownerId).name,
                 )
             )
 

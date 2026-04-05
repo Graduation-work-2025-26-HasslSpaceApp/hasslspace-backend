@@ -2,7 +2,7 @@ package ru.hse.hasslspace.serverservice.controller
 
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
-import ru.hse.hasslspace.serverservice.repository.ServerRoleRepository
+import ru.hse.hasslspace.serverservice.dto.CreateServerRequest
 import ru.hse.hasslspace.serverservice.service.ServerService
 import java.util.*
 
@@ -15,10 +15,9 @@ class ServerController(
     @PostMapping(SERVERS_URL)
     fun createServer(
         @RequestHeader(USER_ID_HEADER) userId: UUID,
-        @RequestParam serverName: String,
-        @RequestParam username: String
+        @RequestBody request: CreateServerRequest
     ): ResponseEntity<String> =
-        serverService.createServer(userId, serverName, username)
+        serverService.createServer(userId, request)
 
     @GetMapping(SERVERS_URL)
     fun getServer(
