@@ -14,5 +14,13 @@ spring:
 
 invite_base_url: ${DEV_ENV_INVITE_URL}
 
+app:
+  s3:
+    bucket: ${DEV_ENV_S3_BUCKET}
+    endpoint: ${DEV_ENV_S3_ENDPOINT}
+    region: ${DEV_ENV_S3_REGION}
+    access-key: ${DEV_ENV_S3_ACCESS_KEY}
+    secret-key: ${DEV_ENV_S3_SECRET_KEY}
+
 server:
   port: ${DEV_ENV_SERVER_PORT}
