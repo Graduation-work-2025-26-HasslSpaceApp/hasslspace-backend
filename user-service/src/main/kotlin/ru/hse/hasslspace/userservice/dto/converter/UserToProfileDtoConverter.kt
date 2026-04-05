@@ -3,7 +3,6 @@ package ru.hse.hasslspace.userservice.dto.converter
 import org.springframework.stereotype.Component
 import ru.hse.hasslspace.userservice.dto.ProfileDto
 import ru.hse.hasslspace.userservice.model.User
-import java.util.UUID
 
 @Component
 class UserToProfileDtoConverter {
@@ -14,6 +13,7 @@ class UserToProfileDtoConverter {
             username = user.username,
             name = user.name,
             email = user.email,
+            status = user.status.toString(),
             photoUrl = user.photoUrl,
             description = user.userInfo
         )

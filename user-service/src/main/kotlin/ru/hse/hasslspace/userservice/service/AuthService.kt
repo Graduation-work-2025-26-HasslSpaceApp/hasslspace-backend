@@ -8,7 +8,6 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import ru.hse.hasslspace.userservice.dto.EmailRequest
-import ru.hse.hasslspace.userservice.dto.LoginUserDto
 import ru.hse.hasslspace.userservice.dto.RegisterUserDto
 import ru.hse.hasslspace.userservice.model.User
 import ru.hse.hasslspace.userservice.model.Verification
@@ -69,18 +68,18 @@ class AuthService(
     }
 
     @Transactional
-    fun loginUser(loginUserDto: LoginUserDto): ResponseEntity<String> {
+    fun loginUser(email: String, password: String): ResponseEntity<String> {
         return try {
-            val userDetails = defaultUserDetailsService.loadUserByEmail(loginUserDto.email)
+            val userDetails = defaultUserDetailsService.loadUserByEmail(email)
 
-            if (!passwordEncoder.matches(loginUserDto.password, userDetails.password)) {
-                logger.error("Invalid password for email ${loginUserDto.email}")
+            if (!passwordEncoder.matches(password, userDetails.password)) {
+                logger.error("Invalid password for email $email")
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Неверный пароль")
             }
 
             val jwt = jwtService.generateToken(userDetails as User)
 
-            logger.info("User with email ${loginUserDto.email} successfully logged in")
+            logger.info("User with email $email successfully logged in")
             ResponseEntity.status(HttpStatus.OK).body(jwt)
         } catch (e: Exception) {
             logger.error("Error while logging in user", e)

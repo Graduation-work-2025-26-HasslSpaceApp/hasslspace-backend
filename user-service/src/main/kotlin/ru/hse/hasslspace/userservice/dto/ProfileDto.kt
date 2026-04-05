@@ -7,6 +7,7 @@ data class ProfileDto(
     val username: String,
     val name: String,
     val email: String,
+    val status: String,
     val photoUrl: String?,
     val description: String?
 )

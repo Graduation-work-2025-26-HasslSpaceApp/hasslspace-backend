@@ -7,7 +7,8 @@ data class FriendsListDto(
     val username: String,
     val name: String,
     val photoUrl: String?,
-    val type: Type
+    val type: Type,
+    val status: String
 ) {
 
     enum class Type {
