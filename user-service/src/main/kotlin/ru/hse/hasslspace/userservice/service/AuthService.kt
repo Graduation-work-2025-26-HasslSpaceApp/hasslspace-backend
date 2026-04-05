@@ -1,6 +1,7 @@
 package ru.hse.hasslspace.userservice.service
 
 import feign.FeignException
+import io.jsonwebtoken.security.Password
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -69,18 +70,18 @@ class AuthService(
     }
 
     @Transactional
-    fun loginUser(loginUserDto: LoginUserDto): ResponseEntity<String> {
+    fun loginUser(email: String, password: String): ResponseEntity<String> {
         return try {
-            val userDetails = defaultUserDetailsService.loadUserByEmail(loginUserDto.email)
+            val userDetails = defaultUserDetailsService.loadUserByEmail(email)
 
-            if (!passwordEncoder.matches(loginUserDto.password, userDetails.password)) {
-                logger.error("Invalid password for email ${loginUserDto.email}")
+            if (!passwordEncoder.matches(password, userDetails.password)) {
+                logger.error("Invalid password for email $email")
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Неверный пароль")
             }
 
             val jwt = jwtService.generateToken(userDetails as User)
 
-            logger.info("User with email ${loginUserDto.email} successfully logged in")
+            logger.info("User with email $email successfully logged in")
             ResponseEntity.status(HttpStatus.OK).body(jwt)
         } catch (e: Exception) {
             logger.error("Error while logging in user", e)

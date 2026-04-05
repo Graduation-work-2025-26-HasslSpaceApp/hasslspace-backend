@@ -26,8 +26,9 @@ class AuthController(
         authService.registerUser(registerDto)
 
     @GetMapping(LOGIN_USER_URL)
-    fun loginUser(@RequestBody loginUserDto: LoginUserDto): ResponseEntity<String> =
-        authService.loginUser(loginUserDto)
+    fun loginUser(@RequestParam email: String,
+                  @RequestParam password: String): ResponseEntity<String> =
+        authService.loginUser(email, password)
 
     @PostMapping(SEND_VERIFICATION_CODE_URL)
     fun sendVerificationCode(
