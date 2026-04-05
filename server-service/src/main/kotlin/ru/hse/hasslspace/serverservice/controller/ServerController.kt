@@ -3,6 +3,7 @@ package ru.hse.hasslspace.serverservice.controller
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import ru.hse.hasslspace.serverservice.dto.CreateServerRequest
+import ru.hse.hasslspace.serverservice.dto.UpdateServerDto
 import ru.hse.hasslspace.serverservice.service.ServerService
 import java.util.*
 
@@ -30,6 +31,14 @@ class ServerController(
             serverService.getAllUserServers(userId)
         }
     }
+
+    @PatchMapping(SERVERS_URL)
+    fun updateServer(
+        @RequestHeader(USER_ID_HEADER) userId: UUID,
+        @RequestParam serverId: UUID,
+        @RequestBody request: UpdateServerDto
+    ): ResponseEntity<String> =
+        serverService.updateServer(userId, serverId, request)
 
     @DeleteMapping(SERVERS_URL)
     fun deleteServer(

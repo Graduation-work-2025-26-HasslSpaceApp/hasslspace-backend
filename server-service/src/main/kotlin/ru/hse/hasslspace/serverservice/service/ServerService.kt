@@ -8,18 +8,11 @@ import org.springframework.transaction.annotation.Transactional
 import ru.hse.hasslspace.serverservice.dto.CreateServerRequest
 import ru.hse.hasslspace.serverservice.dto.ServerInfoExpandedDto
 import ru.hse.hasslspace.serverservice.dto.ServersListDto
+import ru.hse.hasslspace.serverservice.dto.UpdateServerDto
 import ru.hse.hasslspace.serverservice.dto.converter.ServerToServerInfoExpandedDtoConverter
-import ru.hse.hasslspace.serverservice.model.Channel
-import ru.hse.hasslspace.serverservice.model.MemberRole
-import ru.hse.hasslspace.serverservice.model.Server
-import ru.hse.hasslspace.serverservice.model.ServerMember
-import ru.hse.hasslspace.serverservice.model.ServerRole
-import ru.hse.hasslspace.serverservice.repository.ChannelRepository
-import ru.hse.hasslspace.serverservice.repository.MemberRoleRepository
-import ru.hse.hasslspace.serverservice.repository.ServerMemberRepository
-import ru.hse.hasslspace.serverservice.repository.ServerRepository
-import ru.hse.hasslspace.serverservice.repository.ServerRoleRepository
-import ru.hse.hasslspace.serverservice.repository.UserRepository
+import ru.hse.hasslspace.serverservice.model.*
+import ru.hse.hasslspace.serverservice.model.converter.CreateServerRequestToServerConverter
+import ru.hse.hasslspace.serverservice.repository.*
 import java.time.LocalDateTime
 import java.util.*
 
@@ -32,6 +25,7 @@ class ServerService(
     private val channelRepository: ChannelRepository,
     private val userRepository: UserRepository,
     private val serverToServerInfoExpandedDtoConverter: ServerToServerInfoExpandedDtoConverter,
+    private val createServerRequestToServerConverter: CreateServerRequestToServerConverter,
 ) {
 
     @Transactional
@@ -161,6 +155,27 @@ class ServerService(
         } catch (e: Exception) {
             logger.error("Error while getting all user servers", e)
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
+        }
+    }
+
+    @Transactional
+    fun updateServer(userId: UUID, serverId: UUID, request: UpdateServerDto): ResponseEntity<String> {
+        return try {
+            val server = serverRepository.findServerById(serverId) ?: return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("Сервер не найден")
+
+            if (server.ownerId != userId) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Только владелец может обновить сервер")
+            }
+
+            serverRepository.save(createServerRequestToServerConverter.convert(server, request))
+
+            logger.info("Server with id $serverId successfully updated by user $userId")
+
+            ResponseEntity.ok("Сервер успешно обновлен")
+        } catch (e: Exception) {
+            logger.error("Error while updating server", e)
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ошибка при обновлении сервера")
         }
     }
 
