@@ -21,14 +21,9 @@ class PhotoService(
     private val endpoint: String,
 ) {
 
-    fun uploadFile(photo: MultipartFile, type: String, photoUrl: String? = null): String {
-        val key = photoUrl?.substringAfter("$bucket/") ?: run {
-            when (type) {
-                USER_PHOTO_TYPE,
-                ROUTE_PHOTO_TYPE -> "$type/${UUID.randomUUID()}"
-                else -> throw IllegalArgumentException("Unknown photo type: $type")
-            }
-        }
+    fun uploadFile(photo: MultipartFile, photoUrl: String? = null): String {
+        val key = photoUrl?.substringAfter("$bucket/")
+            ?: "$USER_PHOTO_TYPE/${UUID.randomUUID()}"
 
         PutObjectRequest.builder().apply {
             bucket(bucket)
@@ -66,6 +61,5 @@ class PhotoService(
 
     companion object {
         const val USER_PHOTO_TYPE = "user"
-        const val ROUTE_PHOTO_TYPE = "route"
     }
 }

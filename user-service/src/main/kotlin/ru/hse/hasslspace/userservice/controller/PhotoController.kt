@@ -19,10 +19,9 @@ class PhotoController(
     @PutMapping(UPLOAD_PHOTO_URL, consumes = [MULTIPART_FORM_DATA_VALUE])
     fun uploadFile(
         @RequestParam photo: MultipartFile,
-        @RequestParam type: String,
         @RequestParam(required = false) photoUrl: String?
     ): String =
-        photoService.uploadFile(photo, type, photoUrl)
+        photoService.uploadFile(photo, photoUrl)
 
     @GetMapping(DOWNLOAD_PHOTO_URL)
     fun downloadFile(@RequestParam key: String): ResponseEntity<ByteArray> =
