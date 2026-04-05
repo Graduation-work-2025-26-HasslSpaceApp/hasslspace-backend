@@ -14,6 +14,7 @@ class UserToProfileDtoConverter {
             username = user.username,
             name = user.name,
             email = user.email,
+            status = user.status.toString(),
             photoUrl = user.photoUrl,
             description = user.userInfo
         )

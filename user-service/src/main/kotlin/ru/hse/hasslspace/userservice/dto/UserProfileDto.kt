@@ -8,7 +8,8 @@ data class UserProfileDto(
     val name: String,
     val photoUrl: String?,
     val description: String?,
-    val friendStatus: StatusType
+    val friendStatus: StatusType,
+    val status: String
 ) {
 
     enum class StatusType {

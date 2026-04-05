@@ -13,7 +13,8 @@ class UserToFriendListDroConverter {
             username = user.username,
             name = user.name,
             photoUrl = user.photoUrl,
-            type = type
+            type = type,
+            status = user.status.toString(),
         )
     }
 }
