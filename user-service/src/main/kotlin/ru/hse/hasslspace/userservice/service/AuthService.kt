@@ -1,7 +1,6 @@
 package ru.hse.hasslspace.userservice.service
 
 import feign.FeignException
-import io.jsonwebtoken.security.Password
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -9,7 +8,6 @@ import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import ru.hse.hasslspace.userservice.dto.EmailRequest
-import ru.hse.hasslspace.userservice.dto.LoginUserDto
 import ru.hse.hasslspace.userservice.dto.RegisterUserDto
 import ru.hse.hasslspace.userservice.model.User
 import ru.hse.hasslspace.userservice.model.Verification
