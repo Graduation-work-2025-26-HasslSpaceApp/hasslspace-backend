@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: voice-service
+
+livekit:
+  api-key: ${LIVEKIT_API_KEY}
+  api-secret: ${LIVEKIT_API_SECRET}
+  host: ${LIVEKIT_HOST}
+  url: ${LIVEKIT_URL}
+
+server:
+  port: 8084
