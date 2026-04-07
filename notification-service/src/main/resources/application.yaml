@@ -31,7 +31,7 @@ spring:
 #              packages: '*'
 
 server:
-  port: 8083
+  port: ${DEV_ENV_SERVER_PORT}
 
 #management:
 #  endpoints.web.exposure.include: 'prometheus, health, info, metrics'
