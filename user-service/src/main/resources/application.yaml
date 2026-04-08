@@ -13,7 +13,7 @@ spring:
       client:
         config:
           notification-service:
-            url: http://${DEV_ENV_HOST}:8083
+            url: http://${DEV_ENV_NOTIFICATION_HOST}:${DEV_ENV_NOTIFICATION_PORT}
 
 jwt:
   secret: ${JWT_SECRET}
@@ -26,7 +26,7 @@ feign:
       send-email: /send-mail
 
 notification-service:
-  transport-type: HTTP
+  transport-type: ${DEV_ENV_NOTIFICATION_TRANSPORT_TYPE}
 
 app:
   s3:

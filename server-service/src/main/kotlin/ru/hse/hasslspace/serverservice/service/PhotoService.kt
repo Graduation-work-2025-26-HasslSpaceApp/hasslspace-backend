@@ -1,4 +1,4 @@
-package ru.hse.hasslspace.userservice.service
+package ru.hse.hasslspace.serverservice.service
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.http.HttpHeaders
@@ -23,7 +23,7 @@ class PhotoService(
 
     fun uploadFile(photo: MultipartFile, photoUrl: String? = null): String {
         val key = photoUrl?.substringAfter("$bucket/")
-            ?: "$USER_PHOTO_TYPE/${UUID.randomUUID()}"
+            ?: "${SERVER_PHOTO_TYPE}/${UUID.randomUUID()}"
 
         PutObjectRequest.builder().apply {
             bucket(bucket)
@@ -60,6 +60,6 @@ class PhotoService(
     }
 
     companion object {
-        const val USER_PHOTO_TYPE = "user"
+        const val SERVER_PHOTO_TYPE = "server"
     }
 }

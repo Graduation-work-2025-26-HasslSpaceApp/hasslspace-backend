@@ -24,6 +24,8 @@ dependencies {
     implementation("org.springframework.boot:spring-boot-starter-webmvc")
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("tools.jackson.module:jackson-module-kotlin")
+    implementation("software.amazon.awssdk:aws-sdk-java:2.20.0")
+    implementation("software.amazon.awssdk:apache-client:2.20.0")
     implementation("org.springframework.boot:spring-boot-starter-liquibase")
     runtimeOnly("org.postgresql:postgresql")
     testImplementation("org.springframework.boot:spring-boot-starter-data-jdbc-test")
