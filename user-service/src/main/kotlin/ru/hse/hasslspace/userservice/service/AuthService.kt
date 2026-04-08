@@ -49,7 +49,7 @@ class AuthService(
                 User(
                     email = registerUserDto.email,
                     username = registerUserDto.username,
-                    name = registerUserDto.username, // TODO: уточнить
+                    name = registerUserDto.name,
                     password = encodedPassword
                 )
             )
@@ -92,8 +92,11 @@ class AuthService(
         return try {
             val verificationCode = (100_000..999_999).random().toString()
 
+            val codeId = verificationRepository.findByUserId(userId)?.id
+
             verificationRepository.save(
                 Verification(
+                    id = codeId,
                     userId = userId,
                     code = passwordEncoder.encode(verificationCode).toString(),
                     createdAt = LocalDateTime.now()
