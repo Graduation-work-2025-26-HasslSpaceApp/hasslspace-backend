@@ -139,6 +139,11 @@ class ServerService(
     fun getAllUserServers(userId: UUID): ResponseEntity<List<ServersListDto>> {
         return try {
             val serverIds = serverMemberRepository.findAllByUserId(userId).map { it.id.serverId }
+            if (serverIds.isEmpty()) {
+                logger.info("User with id $userId has no servers.")
+                return ResponseEntity.ok(emptyList())
+            }
+
             val servers = serverRepository.findAllServersById(serverIds)
 
             logger.info("User with id $userId requested all their servers. Found ${servers.size} servers.")
