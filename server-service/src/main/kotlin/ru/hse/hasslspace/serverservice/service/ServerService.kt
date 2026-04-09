@@ -12,7 +12,7 @@ import ru.hse.hasslspace.serverservice.dto.UpdateServerDto
 import ru.hse.hasslspace.serverservice.dto.converter.ServerToServerInfoExpandedDtoConverter
 import ru.hse.hasslspace.serverservice.dto.converter.ServerToServersListDtoConverter
 import ru.hse.hasslspace.serverservice.model.*
-import ru.hse.hasslspace.serverservice.model.converter.CreateServerRequestToServerConverter
+import ru.hse.hasslspace.serverservice.model.converter.UpdateServerDtoToServerConverter
 import ru.hse.hasslspace.serverservice.repository.*
 import java.time.LocalDateTime
 import java.util.*
@@ -26,7 +26,7 @@ class ServerService(
     private val channelRepository: ChannelRepository,
     private val userRepository: UserRepository,
     private val serverToServerInfoExpandedDtoConverter: ServerToServerInfoExpandedDtoConverter,
-    private val createServerRequestToServerConverter: CreateServerRequestToServerConverter,
+    private val updateServerDtoToServerConverter: UpdateServerDtoToServerConverter,
     private val serverToServersListDtoConverter: ServerToServersListDtoConverter,
 ) {
 
@@ -204,7 +204,7 @@ class ServerService(
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Только владелец может обновить сервер")
             }
 
-            serverRepository.save(createServerRequestToServerConverter.convert(server, request))
+            serverRepository.save(updateServerDtoToServerConverter.convert(server, request))
 
             logger.info("Server with id $serverId successfully updated by user $userId")
 

@@ -5,7 +5,7 @@ import ru.hse.hasslspace.serverservice.dto.UpdateServerDto
 import ru.hse.hasslspace.serverservice.model.Server
 
 @Component
-class CreateServerRequestToServerConverter {
+class UpdateServerDtoToServerConverter {
 
     fun convert(server: Server, request: UpdateServerDto): Server =
         Server(

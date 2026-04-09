@@ -7,9 +7,11 @@ import org.springframework.transaction.annotation.Transactional
 import org.slf4j.LoggerFactory
 import ru.hse.hasslspace.serverservice.dto.CreateRoleRequest
 import ru.hse.hasslspace.serverservice.dto.RoleInfoDto
+import ru.hse.hasslspace.serverservice.dto.UpdateServerRoleDto
 import ru.hse.hasslspace.serverservice.dto.converter.RoleToRoleInfoDtoConverter
 import ru.hse.hasslspace.serverservice.model.MemberRole
 import ru.hse.hasslspace.serverservice.model.ServerRole
+import ru.hse.hasslspace.serverservice.model.converter.UpdateServerRoleDtoToServerRoleConverter
 import ru.hse.hasslspace.serverservice.repository.MemberRoleRepository
 import ru.hse.hasslspace.serverservice.repository.ServerMemberRepository
 import ru.hse.hasslspace.serverservice.repository.ServerRepository
@@ -24,7 +26,8 @@ class ServerRoleService(
     private val serverRoleRepository: ServerRoleRepository,
     private val memberRoleRepository: MemberRoleRepository,
     private val userRepository: UserRepository,
-    private val roleToRoleInfoDtoConverter: RoleToRoleInfoDtoConverter
+    private val roleToRoleInfoDtoConverter: RoleToRoleInfoDtoConverter,
+    private val updateServerRoleDtoToServerRoleConverter: UpdateServerRoleDtoToServerRoleConverter
 ) {
 
     @Transactional
@@ -199,6 +202,32 @@ class ServerRoleService(
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ошибка при забирании роли")
         }
     }
+
+    @Transactional
+    fun updateRole(userId: UUID, serverId: UUID, roleId: UUID, request: UpdateServerRoleDto): ResponseEntity<String> {
+        return try {
+            val server = serverRepository.findServerById(serverId)
+                ?: return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Сервер не найден")
+
+            // TODO: исправить, пока только владелец может изменять роли
+            if (server.ownerId != userId) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Только владелец сервера может забирать роли")
+            }
+
+            val role = serverRoleRepository.findById(roleId).orElse(null)
+                ?: return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Роль не найдена")
+
+            serverRoleRepository.save(updateServerRoleDtoToServerRoleConverter.convert(role, request))
+
+            logger.info("Updating role $roleId on server $serverId by user $userId")
+
+            ResponseEntity.ok("Роль успешно обновлена")
+        } catch (e: Exception) {
+            logger.error("Error while updating role", e)
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ошибка при обновлении роли")
+        }
+    }
+
 
     companion object {
         private val logger = LoggerFactory.getLogger(ServerRoleService::class.java)
