@@ -23,10 +23,13 @@ class ServerController(
     @GetMapping(SERVERS_URL)
     fun getServer(
         @RequestHeader(USER_ID_HEADER) userId: UUID,
-        @RequestParam(required = false) serverId: UUID?
+        @RequestParam(required = false) serverId: UUID?,
+        @RequestParam(required = false) friendId: UUID?
     ): ResponseEntity<*> {
-        return if (serverId != null) {
+        return if (serverId != null && friendId == null) {
             serverService.getServer(userId, serverId)
+        } else if(serverId == null && friendId != null) {
+            serverService.getSharedServers(userId, friendId)
         } else {
             serverService.getAllUserServers(userId)
         }
