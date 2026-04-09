@@ -27,4 +27,14 @@ interface ServerInviteRepository : CrudRepository<ServerInvite, String> {
         """
     )
     fun findAllActiveByServerId(serverId: UUID): List<ServerInvite>
+
+    @Query(
+        """
+            select *
+            from server_invite
+            where code = :code
+              and (expires_at is null or expires_at > now())
+        """
+    )
+    fun findByCode(code: String): ServerInvite?
 }
