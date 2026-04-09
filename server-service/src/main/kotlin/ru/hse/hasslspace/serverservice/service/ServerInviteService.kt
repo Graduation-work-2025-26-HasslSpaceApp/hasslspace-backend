@@ -80,6 +80,26 @@ class ServerInviteService(
         }
     }
 
+    @Transactional
+    fun deleteInvite(userId: UUID, inviteCode: String): ResponseEntity<String> {
+        return try {
+            val invite = serverInviteRepository.findByCode(inviteCode)
+                ?: return ResponseEntity.status(HttpStatus.NOT_FOUND).build()
+
+            serverMemberRepository.findByServerIdAndUserId(invite.serverId, userId)
+                ?: return ResponseEntity.status(HttpStatus.FORBIDDEN).build()
+
+            serverInviteRepository.delete(invite)
+
+            logger.info("Invite with code $inviteCode deleted by user $userId")
+
+            ResponseEntity.status(HttpStatus.OK).body("Приглашение с кодом $inviteCode успешно удалено")
+        } catch (e: Exception) {
+            logger.error("Error while deleting invite", e)
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
+        }
+    }
+
     private fun generateInviteCode(): String {
         return UUID.randomUUID().toString().replace("-", "").take(8).uppercase()
     }

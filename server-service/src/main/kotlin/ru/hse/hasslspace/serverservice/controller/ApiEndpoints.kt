@@ -9,6 +9,7 @@ const val SERVERS_URL = "/servers"
 const val SERVERS_MEMBERS_URL = "/servers/members"
 const val SERVERS_MEMBERS_ME_URL = "/servers/members/me"
 const val SERVERS_MEMBERS_NOT_IN_SERVER_URL = "/servers/members/not-in-server"
+const val SERVERS_MEMBERS_CHANGE_OWNER_URL = "/servers/members/change-owner"
 
 const val SERVER_INVITES_URL = "/servers/invites"
 const val INVITES_JOIN_URL = "/invites/join"

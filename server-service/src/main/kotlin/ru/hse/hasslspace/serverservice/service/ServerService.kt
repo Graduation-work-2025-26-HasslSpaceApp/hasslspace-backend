@@ -10,8 +10,9 @@ import ru.hse.hasslspace.serverservice.dto.ServerInfoExpandedDto
 import ru.hse.hasslspace.serverservice.dto.ServersListDto
 import ru.hse.hasslspace.serverservice.dto.UpdateServerDto
 import ru.hse.hasslspace.serverservice.dto.converter.ServerToServerInfoExpandedDtoConverter
+import ru.hse.hasslspace.serverservice.dto.converter.ServerToServersListDtoConverter
 import ru.hse.hasslspace.serverservice.model.*
-import ru.hse.hasslspace.serverservice.model.converter.CreateServerRequestToServerConverter
+import ru.hse.hasslspace.serverservice.model.converter.UpdateServerDtoToServerConverter
 import ru.hse.hasslspace.serverservice.repository.*
 import java.time.LocalDateTime
 import java.util.*
@@ -25,7 +26,8 @@ class ServerService(
     private val channelRepository: ChannelRepository,
     private val userRepository: UserRepository,
     private val serverToServerInfoExpandedDtoConverter: ServerToServerInfoExpandedDtoConverter,
-    private val createServerRequestToServerConverter: CreateServerRequestToServerConverter,
+    private val updateServerDtoToServerConverter: UpdateServerDtoToServerConverter,
+    private val serverToServersListDtoConverter: ServerToServersListDtoConverter,
 ) {
 
     @Transactional
@@ -149,16 +151,45 @@ class ServerService(
             logger.info("User with id $userId requested all their servers. Found ${servers.size} servers.")
 
             ResponseEntity.ok(
-                servers.map { server ->
-                    ServersListDto(
-                        serverId = server.id!!,
-                        serverName = server.name,
-                        photoUrl = server.iconUrl
-                    )
-                }
+                servers.map { server -> serverToServersListDtoConverter.convert(server) }
             )
         } catch (e: Exception) {
             logger.error("Error while getting all user servers", e)
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
+        }
+    }
+
+    @Transactional
+    fun getSharedServers(userId: UUID, friendId: UUID): ResponseEntity<List<ServersListDto>> {
+        return try {
+            val userServerIds = serverMemberRepository.findAllByUserId(userId).map { it.id.serverId }
+            if (userServerIds.isEmpty()) {
+                logger.info("User with id $userId has no shared servers with user $friendId.")
+                return ResponseEntity.ok(emptyList())
+            }
+
+            val friendServerIds = serverMemberRepository.findAllByUserId(friendId).map { it.id.serverId }
+            if (friendServerIds.isEmpty()) {
+                logger.info("User with id $friendId has no shared servers with user $userId.")
+                return ResponseEntity.ok(emptyList())
+            }
+
+            val sharedServerIds = userServerIds.intersect(friendServerIds.toSet())
+            if (sharedServerIds.isEmpty()) {
+                logger.info("Users with ids $userId and $friendId have no shared servers.")
+                return ResponseEntity.ok(emptyList())
+            }
+
+            val sharedServers = serverRepository.findAllServersById(sharedServerIds.toList())
+
+            logger.info("Users with ids $userId and $friendId have ${sharedServers.size} shared servers.")
+
+            ResponseEntity.ok(
+                sharedServers.map { server -> serverToServersListDtoConverter.convert(server) }
+            )
+
+        } catch (e: Exception) {
+            logger.error("Error while getting all user shared servers", e)
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build()
         }
     }
@@ -173,7 +204,7 @@ class ServerService(
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Только владелец может обновить сервер")
             }
 
-            serverRepository.save(createServerRequestToServerConverter.convert(server, request))
+            serverRepository.save(updateServerDtoToServerConverter.convert(server, request))
 
             logger.info("Server with id $serverId successfully updated by user $userId")
 

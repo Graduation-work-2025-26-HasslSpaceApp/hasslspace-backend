@@ -1,6 +1,7 @@
 package ru.hse.hasslspace.serverservice.controller
 
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestHeader
@@ -31,5 +32,13 @@ class ServerInviteController(
         @RequestParam serverId: UUID
     ): ResponseEntity<List<ServerInviteDto>> {
         return serverInviteService.getActiveInvites(userId, serverId)
+    }
+
+    @DeleteMapping(SERVER_INVITES_URL)
+    fun deleteInvite(
+        @RequestHeader(USER_ID_HEADER) userId: UUID,
+        @RequestParam inviteCode: String
+    ): ResponseEntity<String> {
+        return serverInviteService.deleteInvite(userId, inviteCode)
     }
 }

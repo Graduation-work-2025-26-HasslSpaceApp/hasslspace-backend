@@ -53,4 +53,13 @@ class ServerMemberController(
     ): ResponseEntity<List<FriendsListDto>> {
         return serverMemberService.getFriendsNotInServer(userId, serverId)
     }
+
+    @PatchMapping(SERVERS_MEMBERS_CHANGE_OWNER_URL)
+    fun changeServerOwner(
+        @RequestHeader(USER_ID_HEADER) userId: UUID,
+        @RequestParam serverId: UUID,
+        @RequestParam newOwnerId: UUID
+    ): ResponseEntity<String> {
+        return serverMemberService.changeServerOwner(userId, serverId, newOwnerId)
+    }
 }
