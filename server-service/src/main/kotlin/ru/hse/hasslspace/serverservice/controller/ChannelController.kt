@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import ru.hse.hasslspace.serverservice.dto.ChannelDto
 import ru.hse.hasslspace.serverservice.dto.CreateChannelRequest
+import ru.hse.hasslspace.serverservice.dto.UpdateChannelDto
 import ru.hse.hasslspace.serverservice.service.ChannelService
 import java.util.*
 
@@ -38,5 +39,15 @@ class ChannelController(
         @RequestParam channelId: UUID
     ): ResponseEntity<ChannelDto> {
         return channelService.getChannelInfo(userId, serverId, channelId)
+    }
+
+    @PatchMapping(SERVERS_CHANNELS_URL)
+    fun updateChannel(
+        @RequestHeader(USER_ID_HEADER) userId: UUID,
+        @RequestParam serverId: UUID,
+        @RequestParam channelId: UUID,
+        @RequestBody request: UpdateChannelDto
+    ): ResponseEntity<String> {
+        return channelService.updateChannel(userId, serverId, channelId, request)
     }
 }
