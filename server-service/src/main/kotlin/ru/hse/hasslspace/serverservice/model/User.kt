@@ -46,8 +46,9 @@ data class User(
 
     enum class StatusType {
         ONLINE,
-        OFFLINE
-        // TODO: Add more status types if needed
+        OFFLINE,
+        INVISIBLE,
+        DO_NOT_DISTURB
     }
 
     companion object {
