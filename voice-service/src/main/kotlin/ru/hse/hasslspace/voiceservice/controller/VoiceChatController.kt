@@ -10,7 +10,7 @@ import java.util.*
 @RequestMapping(VOICE_SERVICE_BASE_PATH_URL)
 class VoiceChatController(private val voiceChatService: VoiceChatService) {
 
-    @GetMapping(GET_TOKEN_URL)
+    @PostMapping(GET_TOKEN_URL)
     fun getToken(
         @RequestHeader(USER_ID_HEADER) userId: UUID,
         @RequestBody request: TokenRequest
