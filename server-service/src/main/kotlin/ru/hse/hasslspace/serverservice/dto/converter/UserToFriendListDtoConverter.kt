@@ -13,6 +13,7 @@ class UserToFriendListDtoConverter {
             username = user.username,
             name = user.name,
             photoUrl = user.photoUrl,
+            status = user.status.toString(),
             type = type
         )
     }

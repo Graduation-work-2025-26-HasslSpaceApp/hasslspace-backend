@@ -205,6 +205,65 @@ class ServerMemberService(
         }
     }
 
+    @Transactional
+    fun changeServerOwner(currentUserId: UUID, serverId: UUID, newOwnerId: UUID): ResponseEntity<String> {
+        return try {
+            val server = serverRepository.findServerById(serverId)
+                ?: return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Сервер не найден")
+
+            if (server.ownerId != currentUserId) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body("Только владелец сервера может передавать права собственности")
+            }
+
+            serverMemberRepository.findByServerIdAndUserId(serverId, newOwnerId)
+                ?: return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Новый владелец должен быть участником сервера")
+
+            val adminRoleId = serverRoleRepository.findAdminRoleIdByServerId(serverId)
+
+            serverRepository.save(server.also { it.ownerId = newOwnerId })
+
+            memberRoleRepository.delete(
+                MemberRole(
+                    MemberRole.MemberRoleId(
+                        serverId = serverId,
+                        userId = currentUserId,
+                        roleId = adminRoleId
+                    )
+                )
+            )
+
+            memberRoleRepository.save(
+                MemberRole(
+                    MemberRole.MemberRoleId(
+                        serverId = serverId,
+                        userId = newOwnerId,
+                        roleId = adminRoleId
+                    )
+                )
+            )
+
+            memberRoleRepository.save(
+                MemberRole(
+                    MemberRole.MemberRoleId(
+                        serverId = serverId,
+                        userId = currentUserId,
+                        roleId = serverRoleRepository.findDefaultRoleByServerId(serverId)!!.id!!
+                    )
+                )
+            )
+
+            logger.info("User $currentUserId transferred ownership of server $serverId to $newOwnerId")
+
+            ResponseEntity.ok("Права собственности успешно переданы")
+        } catch (e: Exception) {
+            logger.error("Error while changing server owner", e)
+            ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body("Ошибка при передаче прав собственности")
+        }
+    }
+
     companion object {
         private val logger = LoggerFactory.getLogger(ServerMemberService::class.java)
     }

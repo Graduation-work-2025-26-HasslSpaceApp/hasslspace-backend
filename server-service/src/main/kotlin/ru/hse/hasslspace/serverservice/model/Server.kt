@@ -17,7 +17,7 @@ data class Server(
     var name: String,
 
     @Column(OWNER_ID_COLUMN_NAME)
-    val ownerId: UUID,
+    var ownerId: UUID,
 
     @Column(ICON_URL_COLUMN_NAME)
     var iconUrl: String? = null,

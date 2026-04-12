@@ -37,4 +37,15 @@ interface ServerRoleRepository : CrudRepository<ServerRole, UUID> {
         """
     )
     fun findAllByServerId(serverId: UUID): List<ServerRole>
+
+    @Query(
+        """
+            select id
+            from server_role
+            where server_id = :serverId
+              and position = 1
+            limit 1
+        """
+    )
+    fun findAdminRoleIdByServerId(serverId: UUID): UUID
 }

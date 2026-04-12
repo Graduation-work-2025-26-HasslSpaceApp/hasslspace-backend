@@ -7,6 +7,7 @@ data class FriendsListDto(
     val username: String,
     val name: String,
     val photoUrl: String?,
+    val status: String,
     val type: Type
 ) {
 

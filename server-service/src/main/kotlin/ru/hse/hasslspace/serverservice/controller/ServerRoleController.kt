@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import ru.hse.hasslspace.serverservice.dto.CreateRoleRequest
 import ru.hse.hasslspace.serverservice.dto.RoleInfoDto
-
+import ru.hse.hasslspace.serverservice.dto.UpdateServerRoleDto
 import ru.hse.hasslspace.serverservice.service.ServerRoleService
 import java.util.*
 
@@ -58,5 +58,15 @@ class ServerRoleController(
         @RequestParam roleId: UUID
     ): ResponseEntity<String> {
         return serverRoleService.removeRole(userId, serverId, targetUserId, roleId)
+    }
+
+    @PatchMapping(SERVERS_ROLES_URL)
+    fun updateRole(
+        @RequestHeader(USER_ID_HEADER) userId: UUID,
+        @RequestParam serverId: UUID,
+        @RequestParam roleId: UUID,
+        @RequestBody request: UpdateServerRoleDto
+    ): ResponseEntity<String> {
+        return serverRoleService.updateRole(userId, serverId, roleId, request)
     }
 }
