@@ -1,6 +1,16 @@
 spring:
   application:
     name: chat-service
+  datasource:
+    url: jdbc:postgresql://${DEV_ENV_HOST}:5432/${DEV_ENV_DB_NAME}
+    username: ${DEV_ENV_DB_USER}
+    password: ${DEV_ENV_DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+#  liquibase:
+#    enabled: true
+  #logging:
+  #  level:
+  #    org.springframework.jdbc.core: DEBUG
 
 server:
     port: ${DEV_ENV_SERVER_PORT}
