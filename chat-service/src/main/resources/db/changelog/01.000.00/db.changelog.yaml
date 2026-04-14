@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - include:
+      relativeToChangelogFile: true
+      file: chat.sql
+  - include:
+      relativeToChangelogFile: true
+      file: message.sql
+  - include:
+      relativeToChangelogFile: true
+      file: private_chat_member.sql
+  - changeSet:
+      id: 01.000.00
+      author: aevsyukov_1@edu.hse.ru
+      logicalFilePath: 01.000.00/db.changelog.yaml
+      changes:
+        - tagDatabase:
+            tag: 01.000.00
