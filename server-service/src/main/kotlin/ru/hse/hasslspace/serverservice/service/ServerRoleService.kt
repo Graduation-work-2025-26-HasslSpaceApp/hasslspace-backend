@@ -61,6 +61,7 @@ class ServerRoleService(
         }
     }
 
+    @Transactional
     fun getRoles(userId: UUID, serverId: UUID): ResponseEntity<List<RoleInfoDto>> {
         return try {
             serverMemberRepository.findByServerIdAndUserId(serverId, userId)
@@ -227,7 +228,6 @@ class ServerRoleService(
             ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Ошибка при обновлении роли")
         }
     }
-
 
     companion object {
         private val logger = LoggerFactory.getLogger(ServerRoleService::class.java)

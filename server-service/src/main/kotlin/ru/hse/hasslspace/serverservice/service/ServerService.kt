@@ -90,6 +90,7 @@ class ServerService(
         }
     }
 
+    @Transactional
     fun getServer(userId: UUID, serverId: UUID): ResponseEntity<ServerInfoExpandedDto> {
         return try {
             serverMemberRepository.findByServerIdAndUserId(serverId, userId)
@@ -137,6 +138,7 @@ class ServerService(
         }
     }
 
+    @Transactional
     // todo: исправить
     fun getAllUserServers(userId: UUID): ResponseEntity<List<ServersListDto>> {
         return try {
