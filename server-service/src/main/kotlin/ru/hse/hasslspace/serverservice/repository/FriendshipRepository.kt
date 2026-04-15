@@ -12,7 +12,7 @@ interface FriendshipRepository : CrudRepository<Friendship, UUID> {
     @Query("""
         select *
         from friendship
-        where requester_id = :userId or requester_id = :userId
+        where requester_id = :userId or addressee_id = :userId
     """)
     fun findFriendshipsByUserId(userId: UUID): List<Friendship>
 }
