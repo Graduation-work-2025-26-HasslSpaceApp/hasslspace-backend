@@ -35,4 +35,15 @@ interface PrivateChatMemberRepository : CrudRepository<PrivateChatMember, Privat
         """
     )
     fun findAllByChatId(chatId: UUID): List<PrivateChatMember>
+
+    @Query(
+        """
+            select exists(
+                select 1
+                from private_chat_member
+                where chat_id = :chatId and user_id = :userId
+            )
+        """
+    )
+    fun existsByChatIdAndUserId(chatId: UUID, userId: UUID): Boolean
 }

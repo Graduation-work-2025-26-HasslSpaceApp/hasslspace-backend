@@ -6,11 +6,16 @@ import org.springframework.http.ResponseEntity
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 import ru.hse.hasslspace.chatservice.dto.ChatDto
+import ru.hse.hasslspace.chatservice.dto.MessageDto
 import ru.hse.hasslspace.chatservice.dto.converter.ChatToChatDtoConverter
 import ru.hse.hasslspace.chatservice.model.Chat
 import ru.hse.hasslspace.chatservice.model.PrivateChatMember
+import ru.hse.hasslspace.chatservice.model.converter.MessageDtoToMessageConverter
+import ru.hse.hasslspace.chatservice.repository.ChannelRepository
 import ru.hse.hasslspace.chatservice.repository.ChatRepository
+import ru.hse.hasslspace.chatservice.repository.MessageRepository
 import ru.hse.hasslspace.chatservice.repository.PrivateChatMemberRepository
+import ru.hse.hasslspace.chatservice.repository.ServerMemberRepository
 import ru.hse.hasslspace.chatservice.repository.UserRepository
 import java.util.*
 
@@ -19,7 +24,12 @@ class ChatService(
     private val chatRepository: ChatRepository,
     private val privateChatMemberRepository: PrivateChatMemberRepository,
     private val userRepository: UserRepository,
+    private val messageRepository: MessageRepository,
     private val chatToChatDtoConverter: ChatToChatDtoConverter,
+    private val channelRepository: ChannelRepository,
+    private val serverMemberRepository: ServerMemberRepository,
+    private val messageDtoToMessageConverter: MessageDtoToMessageConverter,
+    private val centrifugoService: CentrifugoService,
 ) {
 
     @Transactional
@@ -122,6 +132,39 @@ class ChatService(
         } catch (e: Exception) {
             logger.error("Error while retrieving private chats for user $userId", e)
             ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null)
+        }
+    }
+
+    @Transactional
+    fun sendMessage(userId: UUID, chatId: UUID, message: MessageDto): ResponseEntity<String> {
+        return try {
+            val chat = chatRepository.findById(chatId).orElse(null)
+                ?: return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Чат не найден")
+
+            val hasAccess = when (chat.type) {
+                Chat.ChatType.PRIVATE -> privateChatMemberRepository.existsByChatIdAndUserId(chatId, userId)
+                else -> {
+                    val serverId = channelRepository.findServerIdByChannelId(chat.channelId!!)
+                        ?: return ResponseEntity.badRequest().body("Неверный канал")
+                    serverMemberRepository.existsByServerIdAndUserId(serverId, userId)
+                }
+            }
+
+            if (!hasAccess) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body("Пользователь не имеет доступа к чату")
+            }
+
+            val message = messageRepository.save(messageDtoToMessageConverter.convert(userId, chatId, message))
+
+            centrifugoService.publish(chatId, message)
+
+            logger.info("User $userId sent message to chat $chatId")
+
+            ResponseEntity.ok("Сообщение отправлено")
+        } catch (e: Exception) {
+            logger.error("Error while sending message to chat", e)
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ошибка при отправке сообщения")
         }
     }
 

@@ -11,6 +11,19 @@ spring:
   #logging:
   #  level:
   #    org.springframework.jdbc.core: DEBUG
+  cloud:
+    openfeign:
+      client:
+        config:
+          centrifugo-service:
+            url: http://${DEV_ENV_CENTRIFUGO_HOST}:${DEV_ENV_CENTRIFUGO_PORT}
+
+feign:
+  centrifugo-api:
+    endpoints:
+      api: /api
+    method: publish
+    api_key: ${DEV_ENV_CENTRIFUGO_API_KEY}
 
 server:
     port: ${DEV_ENV_SERVER_PORT}
