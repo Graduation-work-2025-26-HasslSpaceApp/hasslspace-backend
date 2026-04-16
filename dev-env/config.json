@@ -16,12 +16,23 @@
     "secret": "admin_secret"
   },
 
+  "engine": {
+    "type": "redis",
+    "redis": {
+      "address": "redis:6379",
+      "password": "strongpassword"
+    }
+  },
+
   "channel": {
     "namespaces": [
       {
         "name": "chat",
         "allow_publish_for_client": false,
-        "allow_subscribe_for_client": true
+        "allow_subscribe_for_client": true,
+
+        "history_size": 1000,
+        "history_ttl": "72h"
       }
     ]
   }
