@@ -57,6 +57,7 @@ class ServerInviteService(
         }
     }
 
+    @Transactional
     fun getActiveInvites(userId: UUID, serverId: UUID): ResponseEntity<List<ServerInviteDto>> {
         return try {
             serverMemberRepository.findByServerIdAndUserId(serverId, userId)
@@ -103,7 +104,6 @@ class ServerInviteService(
     private fun generateInviteCode(): String {
         return UUID.randomUUID().toString().replace("-", "").take(8).uppercase()
     }
-
 
     companion object {
         private val logger = LoggerFactory.getLogger(ServerInviteService::class.java)

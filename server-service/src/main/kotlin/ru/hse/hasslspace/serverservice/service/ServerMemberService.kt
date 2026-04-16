@@ -107,6 +107,7 @@ class ServerMemberService(
         }
     }
 
+    @Transactional
     fun getServerMembers(
         currentUserId: UUID,
         serverId: UUID
@@ -172,7 +173,7 @@ class ServerMemberService(
         }
     }
 
-    @Transactional(readOnly = true)
+    @Transactional
     fun getFriendsNotInServer(userId: UUID, serverId: UUID): ResponseEntity<List<FriendsListDto>> {
         return try {
             serverMemberRepository.findByServerIdAndUserId(serverId, userId)

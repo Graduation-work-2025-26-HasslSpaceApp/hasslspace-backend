@@ -57,7 +57,7 @@ class ChannelService(
         }
     }
 
-
+    @Transactional
     fun getChannelInfo(userId: UUID, serverId: UUID, channelId: UUID): ResponseEntity<ChannelDto> {
         return try {
             serverRepository.findServerById(serverId)
