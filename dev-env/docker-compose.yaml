@@ -18,3 +18,12 @@ services:
       - JWT_SECRET=JZ4UO4EZxsyIb3bSn6lvnQGrHk077a3woOSIvtyUuCQ=
     volumes:
       - ./nginx.conf:/usr/local/openresty/nginx/conf/nginx.conf:ro
+
+  centrifugo:
+    image: centrifugo/centrifugo:latest
+    container_name: centrifugo
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./config.json:/centrifugo/config.json
+    command: centrifugo -c config.json

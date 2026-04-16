@@ -1,0 +1,28 @@
+{
+  "client": {
+    "token": {
+      "hmac_secret_key": "your-secret-key-must-be-at-least-256-bits-long"
+    },
+    "allowed_origins": ["*"]
+  },
+
+  "http_api": {
+    "key": "api_key"
+  },
+
+  "admin": {
+    "enabled": true,
+    "password": "admin",
+    "secret": "admin_secret"
+  },
+
+  "channel": {
+    "namespaces": [
+      {
+        "name": "chat",
+        "allow_publish_for_client": false,
+        "allow_subscribe_for_client": true
+      }
+    ]
+  }
+}
