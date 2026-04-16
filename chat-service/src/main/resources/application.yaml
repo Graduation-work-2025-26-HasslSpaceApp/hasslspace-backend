@@ -14,3 +14,7 @@ spring:
 
 server:
     port: ${DEV_ENV_SERVER_PORT}
+
+jwt:
+    secret: ${DEV_ENV_JWT_SECRET}
+    expiration: ${DEV_ENV_JWT_EXPIRATION}
