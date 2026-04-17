@@ -45,7 +45,7 @@ class ChatService(
             }
 
             if (existingChat != null) {
-                return ResponseEntity.ok(existingChat.id.toString())
+                return ResponseEntity.ok(existingChat.id.chatId.toString())
             }
 
             val chat = chatRepository.save(
