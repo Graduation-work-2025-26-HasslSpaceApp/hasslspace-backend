@@ -8,3 +8,6 @@ const val CHATS_URL = "/chats"
 const val CHATS_MESSAGE_URL = "/chats/message"
 
 const val TOKEN_URL = "/token"
+
+const val UPLOAD_FILE_URL = "/file/upload"
+const val DOWNLOAD_FILE_URL = "/file/download"
