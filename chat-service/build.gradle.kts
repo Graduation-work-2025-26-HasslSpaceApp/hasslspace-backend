@@ -27,6 +27,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("io.jsonwebtoken:jjwt:0.13.0")
     implementation("tools.jackson.module:jackson-module-kotlin")
+    implementation("software.amazon.awssdk:aws-sdk-java:2.20.0")
+    implementation("software.amazon.awssdk:apache-client:2.20.0")
     implementation("org.springframework.cloud:spring-cloud-starter-openfeign")
     runtimeOnly("org.postgresql:postgresql")
     testImplementation("org.springframework.boot:spring-boot-starter-data-jdbc-test")
