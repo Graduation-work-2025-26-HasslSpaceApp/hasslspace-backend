@@ -166,7 +166,7 @@ class ChatService(
     }
 
     @Transactional
-    fun getChannelChat(userId: UUID, channelId: UUID): ResponseEntity<ChatDto> {
+    fun getChannelChat(userId: UUID, channelId: UUID): ResponseEntity<String> {
         return try {
             val serverId = channelRepository.findServerIdByChannelId(channelId)
                 ?: return ResponseEntity.badRequest().body(null)
@@ -178,11 +178,9 @@ class ChatService(
             val chat = chatRepository.findByChannelId(channelId)
                 ?: return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null)
 
-            val chatDto = chatToChatDtoConverter.convert(chat, emptyList())
-
             logger.info("Retrieved channel chat with id ${chat.id} for channel $channelId by user $userId")
 
-            ResponseEntity.ok(chatDto)
+            ResponseEntity.ok(chat.id.toString())
         } catch (e: Exception) {
             logger.error("Error while retrieving channel chat", e)
             ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null)
