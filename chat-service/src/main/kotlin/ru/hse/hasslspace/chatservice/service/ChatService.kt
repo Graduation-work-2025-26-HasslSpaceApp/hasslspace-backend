@@ -136,6 +136,60 @@ class ChatService(
     }
 
     @Transactional
+    fun createChannelChat(userId: UUID, channelId: UUID): ResponseEntity<String> {
+        return try {
+            val serverId = channelRepository.findServerIdByChannelId(channelId)
+                ?: return ResponseEntity.badRequest().body("Неверный канал")
+
+            if (!serverMemberRepository.existsByServerIdAndUserId(serverId, userId) ) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Пользователь не является участником сервера")
+            }
+
+            if (chatRepository.existsByChannelId(channelId)) {
+                return ResponseEntity.ok(chatRepository.findByChannelId(channelId)!!.id.toString())
+            }
+
+            val chat = chatRepository.save(
+                Chat(
+                    type = Chat.ChatType.CHANNEL,
+                    channelId = channelId
+                )
+            )
+
+            logger.info("Created channel chat with id ${chat.id} for channel $channelId by user $userId")
+
+            ResponseEntity.status(HttpStatus.CREATED).body(chat.id.toString())
+        } catch (e: Exception) {
+            logger.error("Error while creating channel chat", e)
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ошибка при создании чата для канала")
+        }
+    }
+
+    @Transactional
+    fun getChannelChat(userId: UUID, channelId: UUID): ResponseEntity<ChatDto> {
+        return try {
+            val serverId = channelRepository.findServerIdByChannelId(channelId)
+                ?: return ResponseEntity.badRequest().body(null)
+
+            if (!serverMemberRepository.existsByServerIdAndUserId(serverId, userId) ) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null)
+            }
+
+            val chat = chatRepository.findByChannelId(channelId)
+                ?: return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null)
+
+            val chatDto = chatToChatDtoConverter.convert(chat, emptyList())
+
+            logger.info("Retrieved channel chat with id ${chat.id} for channel $channelId by user $userId")
+
+            ResponseEntity.ok(chatDto)
+        } catch (e: Exception) {
+            logger.error("Error while retrieving channel chat", e)
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null)
+        }
+    }
+
+    @Transactional
     fun sendMessage(userId: UUID, chatId: UUID, message: MessageDto): ResponseEntity<String> {
         return try {
             val chat = chatRepository.findById(chatId).orElse(null)

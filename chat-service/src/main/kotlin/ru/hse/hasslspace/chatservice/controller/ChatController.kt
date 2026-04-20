@@ -12,23 +12,50 @@ class ChatController(
     private val chatService: ChatService
 ) {
     @PostMapping(CHATS_URL)
-    fun createPrivateChat(
+    fun createChat(
         @RequestHeader(USER_ID_HEADER) userId: UUID,
-        @RequestParam targetUserId: UUID
+        @RequestParam targetUserId: UUID? = null,
+        @RequestParam channelId: UUID? = null
     ): ResponseEntity<String> {
-        return chatService.createPrivateChat(userId, targetUserId)
+        return when {
+            targetUserId != null && channelId != null -> {
+                ResponseEntity.badRequest().body("Нельзя указывать одновременно targetUserId и channelId")
+            }
+            targetUserId != null -> {
+                chatService.createPrivateChat(userId, targetUserId)
+            }
+            channelId != null -> {
+                chatService.createChannelChat(userId, channelId)
+            }
+            else -> {
+                ResponseEntity.badRequest().body("Необходимо указать targetUserId или channelId")
+            }
+        }
     }
 
     @GetMapping(CHATS_URL)
-    fun getPrivateChats(
+    fun getChats(
         @RequestHeader(USER_ID_HEADER) userId: UUID,
-        @RequestParam(required = false) chatId: UUID?
-    ): ResponseEntity<*> {
-        return if (chatId != null) {
-            chatService.getPrivateChat(userId, chatId)
-        } else {
-            chatService.getPrivateChats(userId)
-        }
+        @RequestParam chatId: UUID? = null,
+        @RequestParam channelId: UUID? = null
+    ): ResponseEntity<Any> {
+        return when {
+            chatId != null && channelId != null -> {
+                ResponseEntity.badRequest().body("Нельзя указывать одновременно chatId и channelId")
+            }
+
+            chatId != null -> {
+                chatService.getPrivateChat(userId, chatId)
+            }
+
+            channelId != null -> {
+                chatService.getChannelChat(userId, channelId)
+            }
+
+            else -> {
+                chatService.getPrivateChats(userId)
+            }
+        } as ResponseEntity<Any>
     }
 
     @PostMapping(CHATS_MESSAGE_URL)
