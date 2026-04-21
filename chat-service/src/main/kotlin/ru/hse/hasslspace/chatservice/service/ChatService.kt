@@ -9,6 +9,7 @@ import ru.hse.hasslspace.chatservice.dto.ChatDto
 import ru.hse.hasslspace.chatservice.dto.MessageDto
 import ru.hse.hasslspace.chatservice.dto.converter.ChatToChatDtoConverter
 import ru.hse.hasslspace.chatservice.model.Chat
+import ru.hse.hasslspace.chatservice.model.Message
 import ru.hse.hasslspace.chatservice.model.PrivateChatMember
 import ru.hse.hasslspace.chatservice.model.converter.MessageDtoToMessageConverter
 import ru.hse.hasslspace.chatservice.repository.ChannelRepository
@@ -17,6 +18,7 @@ import ru.hse.hasslspace.chatservice.repository.MessageRepository
 import ru.hse.hasslspace.chatservice.repository.PrivateChatMemberRepository
 import ru.hse.hasslspace.chatservice.repository.ServerMemberRepository
 import ru.hse.hasslspace.chatservice.repository.UserRepository
+import java.time.LocalDateTime
 import java.util.*
 
 @Service
@@ -141,7 +143,7 @@ class ChatService(
             val serverId = channelRepository.findServerIdByChannelId(channelId)
                 ?: return ResponseEntity.badRequest().body("Неверный канал")
 
-            if (!serverMemberRepository.existsByServerIdAndUserId(serverId, userId) ) {
+            if (!serverMemberRepository.existsByServerIdAndUserId(serverId, userId)) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body("Пользователь не является участником сервера")
             }
 
@@ -171,7 +173,7 @@ class ChatService(
             val serverId = channelRepository.findServerIdByChannelId(channelId)
                 ?: return ResponseEntity.badRequest().body(null)
 
-            if (!serverMemberRepository.existsByServerIdAndUserId(serverId, userId) ) {
+            if (!serverMemberRepository.existsByServerIdAndUserId(serverId, userId)) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body(null)
             }
 
@@ -217,6 +219,75 @@ class ChatService(
         } catch (e: Exception) {
             logger.error("Error while sending message to chat", e)
             ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ошибка при отправке сообщения")
+        }
+    }
+
+    @Transactional
+    fun getMessageHistory(
+        userId: UUID,
+        chatId: UUID,
+        fromMessageId: UUID?,
+        fromDate: LocalDateTime?,
+        toDate: LocalDateTime?,
+        limit: Int
+    ): ResponseEntity<List<Message>> {
+        return try {
+            val chat = chatRepository.findById(chatId).orElse(null)
+                ?: return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null)
+
+            val hasAccess = when (chat.type) {
+                Chat.ChatType.PRIVATE -> privateChatMemberRepository.existsByChatIdAndUserId(chatId, userId)
+                else -> {
+                    val serverId = channelRepository.findServerIdByChannelId(chat.channelId!!)
+                        ?: return ResponseEntity.badRequest().body(null)
+                    serverMemberRepository.existsByServerIdAndUserId(serverId, userId)
+                }
+            }
+
+            if (!hasAccess) {
+                return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body(null)
+            }
+
+            val messages = when {
+                fromMessageId != null -> {
+                    val fromMessage = messageRepository.findById(fromMessageId)
+                    if (fromMessage.isEmpty) {
+                        return ResponseEntity.notFound().build()
+                    }
+                    val fromDateFromMessage = fromMessage.get().createdAt
+                    messageRepository.findByChatIdAndCreatedAtGreaterThanEqualOrderByCreatedAtAsc(
+                        chatId, fromDateFromMessage, limit
+                    )
+                }
+                fromDate != null && toDate != null -> {
+                    messageRepository.findByChatIdAndCreatedAtBetweenOrderByCreatedAtAsc(
+                        chatId, fromDate, toDate, limit
+                    )
+                }
+                fromDate != null -> {
+                    messageRepository.findByChatIdAndCreatedAtGreaterThanEqualOrderByCreatedAtAsc(
+                        chatId, fromDate, limit
+                    )
+                }
+                toDate != null -> {
+                    messageRepository.findByChatIdAndCreatedAtLessThanEqualOrderByCreatedAtAsc(
+                        chatId, toDate, limit
+                    )
+                }
+                else -> {
+                    messageRepository.findLastMessages(chatId, limit)
+                }
+            }
+
+            return if (messages.isEmpty()) {
+                ResponseEntity.noContent().build()
+            } else {
+                ResponseEntity.ok(messages)
+            }
+        } catch (e: Exception) {
+            logger.error("Error while retrieving message history for chat $chatId", e)
+            ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null)
         }
     }
 

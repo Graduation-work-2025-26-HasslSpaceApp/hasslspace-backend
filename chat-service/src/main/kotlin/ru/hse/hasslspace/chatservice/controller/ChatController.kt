@@ -3,7 +3,9 @@ package ru.hse.hasslspace.chatservice.controller
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import ru.hse.hasslspace.chatservice.dto.MessageDto
+import ru.hse.hasslspace.chatservice.model.Message
 import ru.hse.hasslspace.chatservice.service.ChatService
+import java.time.LocalDateTime
 import java.util.*
 
 @RestController
@@ -21,12 +23,15 @@ class ChatController(
             targetUserId != null && channelId != null -> {
                 ResponseEntity.badRequest().body("Нельзя указывать одновременно targetUserId и channelId")
             }
+
             targetUserId != null -> {
                 chatService.createPrivateChat(userId, targetUserId)
             }
+
             channelId != null -> {
                 chatService.createChannelChat(userId, channelId)
             }
+
             else -> {
                 ResponseEntity.badRequest().body("Необходимо указать targetUserId или channelId")
             }
@@ -65,6 +70,25 @@ class ChatController(
         @RequestBody message: MessageDto
     ): ResponseEntity<String> {
         return chatService.sendMessage(userId, chatId, message)
+    }
+
+    @GetMapping(CHARS_MESSAGE_HISTORY_URL)
+    fun getMessageHistory(
+        @RequestHeader(USER_ID_HEADER) userId: UUID,
+        @RequestParam chatId: UUID,
+        @RequestParam(required = false) fromMessageId: UUID? = null,
+        @RequestParam(required = false) fromDate: LocalDateTime? = null,
+        @RequestParam(required = false) toDate: LocalDateTime? = null,
+        @RequestParam(defaultValue = "50") limit: Int
+    ): ResponseEntity<List<Message>> {
+        return chatService.getMessageHistory(
+            userId = userId,
+            chatId = chatId,
+            fromMessageId = fromMessageId,
+            fromDate = fromDate,
+            toDate = toDate,
+            limit = limit.coerceIn(1, 200)
+        )
     }
 
 }

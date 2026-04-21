@@ -6,6 +6,7 @@ const val CHAT_SERVICE_BASE_PATH_URL = "/api/chat-service"
 
 const val CHATS_URL = "/chats"
 const val CHATS_MESSAGE_URL = "/chats/message"
+const val CHARS_MESSAGE_HISTORY_URL = "/chats/message/history"
 
 const val TOKEN_URL = "/token"
 
