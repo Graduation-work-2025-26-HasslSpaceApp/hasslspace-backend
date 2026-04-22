@@ -104,6 +104,7 @@ class ChannelService(
             }
 
             // TODO: пока не создаем никаких доступов
+            // TODO: вроде каскадно удаляется хз
             //channelPermissionRepository.deleteByChannelId(channelId)
 
             channelRepository.deleteById(channelId)

@@ -40,6 +40,15 @@ interface ChannelPermissionRepository :
     )
     fun findByChannelId(channelId: UUID): List<ChannelPermission>
 
+    @Query(
+        """
+            select *
+            from channel_permission
+            where channel_id in (:channelIds)
+        """
+    )
+    fun findAllByChannelIds(channelIds: List<UUID>): List<ChannelPermission>
+
     @Modifying
     @Query(
         """
