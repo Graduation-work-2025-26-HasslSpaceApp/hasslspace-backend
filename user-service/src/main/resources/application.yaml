@@ -15,6 +15,23 @@ spring:
           notification-service:
             url: http://${DEV_ENV_NOTIFICATION_HOST}:${DEV_ENV_NOTIFICATION_PORT}
 
+  kafka:
+    topic:
+      verify-user-email: verify-user-email
+    bootstrap-servers: ${DEV_ENV_HOST_KAFKA}:${DEV_ENV_PORT_KAFKA}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+      properties:
+        retries: 5
+        retry.backoff.ms: 1000
+        acks: 1
+        spring:
+          json:
+            add:
+              type:
+                headers: false
+
 jwt:
   secret: ${JWT_SECRET}
   expiration: ${JWT_EXPIRATION}
