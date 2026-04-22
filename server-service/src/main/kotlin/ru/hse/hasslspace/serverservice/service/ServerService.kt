@@ -25,6 +25,7 @@ class ServerService(
     private val memberRoleRepository: MemberRoleRepository,
     private val channelRepository: ChannelRepository,
     private val userRepository: UserRepository,
+    private val channelPermissionRepository: ChannelPermissionRepository,
     private val serverToServerInfoExpandedDtoConverter: ServerToServerInfoExpandedDtoConverter,
     private val updateServerDtoToServerConverter: UpdateServerDtoToServerConverter,
     private val serverToServersListDtoConverter: ServerToServersListDtoConverter,
@@ -99,8 +100,28 @@ class ServerService(
             val server = serverRepository.findServerById(serverId)
                 ?: return ResponseEntity.status(HttpStatus.NOT_FOUND).build()
 
+            val userRoleIds = memberRoleRepository
+                .findRoleIdsByServerIdAndUserId(serverId, userId)
+                .toSet()
+
             val members = serverMemberRepository.findAllByServerId(serverId)
             val channels = channelRepository.findAllByServerIdOrderByPosition(serverId)
+
+            var filteredChannels = emptyList<Channel>()
+
+            if (channels.isNotEmpty()) {
+
+                val permissions = channelPermissionRepository
+                    .findAllByChannelIds(channels.mapNotNull { it.id })
+
+                val permissionsByChannel = permissions.groupBy { it.id.channelId }
+
+                filteredChannels = channels.filter { channel ->
+                    !channel.isPrivate ||
+                            permissionsByChannel[channel.id]
+                                ?.any { it.id.roleId in userRoleIds && it.canRead == true } == true
+                }
+            }
 
             val memberDtos = members.map { member ->
                 val roleIds = memberRoleRepository.findRoleIdsByServerIdAndUserId(serverId, member.id.userId)
@@ -114,7 +135,7 @@ class ServerService(
                 )
             }
 
-            val (textChannelDtos, voiceChannelDtos) = channels
+            val (textChannelDtos, voiceChannelDtos) = filteredChannels
                 .partition { it.type == Channel.ChannelType.TEXT }
                 .let { (textChannels, voiceChannels) ->
                     serverToServerInfoExpandedDtoConverter.toTextAndVoiceChannelDtos(

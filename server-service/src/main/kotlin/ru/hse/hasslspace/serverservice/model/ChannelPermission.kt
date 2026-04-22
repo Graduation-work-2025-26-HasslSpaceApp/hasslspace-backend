@@ -1,5 +1,6 @@
 package ru.hse.hasslspace.serverservice.model
 
+import org.springframework.data.annotation.Id
 import org.springframework.data.relational.core.mapping.Column
 import org.springframework.data.relational.core.mapping.Table
 import ru.hse.hasslspace.serverservice.model.ChannelPermission.Companion.TABLE_NAME
@@ -7,11 +8,9 @@ import java.util.*
 
 @Table(TABLE_NAME)
 data class ChannelPermission(
-    @Column(CHANNEL_ID_COLUMN_NAME)
-    val channelId: UUID,
 
-    @Column(ROLE_ID_COLUMN_NAME)
-    val roleId: UUID,
+    @Id
+    val id: ChannelPermissionId,
 
     @Column(CAN_READ_COLUMN_NAME)
     var canRead: Boolean? = null,
@@ -22,6 +21,14 @@ data class ChannelPermission(
     @Column(CAN_MANAGE_COLUMN_NAME)
     var canManage: Boolean? = null
 ) {
+
+    data class ChannelPermissionId(
+        @Column(CHANNEL_ID_COLUMN_NAME)
+        val channelId: UUID?,
+
+        @Column(ROLE_ID_COLUMN_NAME)
+        val roleId: UUID?,
+    )
 
     companion object {
         const val TABLE_NAME = "channel_permission"
