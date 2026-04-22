@@ -18,6 +18,7 @@ const val SERVERS_ROLES_URL = "/servers/roles"
 const val SERVERS_MEMBERS_ROLES_URL = "/servers/members/roles"
 
 const val SERVERS_CHANNELS_URL = "/servers/channels"
+const val SERVERS_CHANNELS_PERMISSIONS_URL = "/servers/channels/permissions"
 
 const val UPLOAD_PHOTO_URL = "/photos/server/upload"
 const val DOWNLOAD_PHOTO_URL = "/photos/server/download"

@@ -17,7 +17,7 @@ interface MemberRoleRepository : CrudRepository<MemberRole, MemberRoleId> {
         """
             insert into member_role (server_id, user_id, role_id)
             values (:#{#memberRole.id.serverId}, :#{#memberRole.id.userId}, :#{#memberRole.id.roleId})
-            returning *
+           returning * 
         """
     )
     fun save(memberRole: MemberRole): MemberRole
