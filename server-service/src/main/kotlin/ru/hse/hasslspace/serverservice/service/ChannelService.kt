@@ -178,17 +178,22 @@ class ChannelService(
                     ?: return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                         .body("Роль Admin не найдена")
 
-                channelPermissionRepository.save(
-                    ChannelPermission(
-                        ChannelPermission.ChannelPermissionId(
-                            channelId = channelId,
-                            roleId = adminRoleId
-                        ),
-                        canRead = true,
-                        canWrite = true,
-                        canManage = true
+                val existingPermission =
+                    channelPermissionRepository.findByChannelIdAndRoleId(channelId, adminRoleId)
+
+                if (existingPermission == null) {
+                    channelPermissionRepository.save(
+                        ChannelPermission(
+                            ChannelPermission.ChannelPermissionId(
+                                channelId = channelId,
+                                roleId = adminRoleId
+                            ),
+                            canRead = true,
+                            canWrite = true,
+                            canManage = true
+                        )
                     )
-                )
+                }
             }
 
             logger.info("Channel $channelId is updated in server $serverId by user $userId")
@@ -228,7 +233,7 @@ class ChannelService(
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Роль не принадлежит этому серверу")
             }
 
-            val existPermission =  channelPermissionRepository.findByChannelIdAndRoleId(channel.id!!, role.id!!)
+            val existPermission = channelPermissionRepository.findByChannelIdAndRoleId(channel.id!!, role.id!!)
 
             if (existPermission != null) {
                 return ResponseEntity.status(HttpStatus.BAD_REQUEST)
