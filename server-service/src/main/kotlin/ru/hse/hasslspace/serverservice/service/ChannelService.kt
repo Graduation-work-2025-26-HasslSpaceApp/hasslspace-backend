@@ -55,6 +55,29 @@ class ChannelService(
                 )
             )
 
+            if (savedChannel.isPrivate) {
+                val roleIds = memberRoleRepository.findRoleIdsByServerIdAndUserId(serverId, userId)
+
+                val adminRoleId = roleIds
+                    .mapNotNull { serverRoleRepository.findById(it).orElse(null) }
+                    .firstOrNull { it.name == "Admin" }
+                    ?.id
+                    ?: return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                        .body("Роль Admin не найдена")
+
+                channelPermissionRepository.save(
+                    ChannelPermission(
+                        ChannelPermission.ChannelPermissionId(
+                            channelId = savedChannel.id,
+                            roleId = adminRoleId
+                        ),
+                        canRead = true,
+                        canWrite = true,
+                        canManage = true
+                    )
+                )
+            }
+
             logger.info("Channel '${request.name}' created in server $serverId by user $userId")
 
             ResponseEntity.status(HttpStatus.CREATED).body("Канал успешно создан")
