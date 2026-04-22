@@ -15,20 +15,20 @@ spring:
           starttls:
             enable: true
 
-#  kafka:
-#    topic:
-#      verify-user-email: verify-user-email
-#    bootstrap-servers: ${DEV_ENV_HOST_KAFKA}:${DEV_ENV_PORT_KAFKA}
-#    consumer:
-#      group-id: notification-service
-#      auto-offset-reset: earliest
-#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-#      properties:
-#        spring:
-#          json:
-#            trusted:
-#              packages: '*'
+  kafka:
+    topic:
+      verify-user-email: verify-user-email
+    bootstrap-servers: ${DEV_ENV_HOST_KAFKA}:${DEV_ENV_PORT_KAFKA}
+    consumer:
+      group-id: notification-service
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      properties:
+        spring:
+          json:
+            trusted:
+              packages: '*'
 
 server:
   port: ${DEV_ENV_SERVER_PORT}
