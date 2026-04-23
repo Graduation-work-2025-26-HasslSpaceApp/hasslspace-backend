@@ -1,0 +1,18 @@
+name: notification-service
+
+replicaCount: 1
+
+image:
+  repository: whomustnotbenamed/hasslspace
+  tag: notification-service-1.1.0-arm64
+  pullPolicy: IfNotPresent
+
+service:
+  port: 8085
+
+env:
+  KAFKA_HOST: host.minikube.internal
+  KAFKA_PORT: "9092"
+
+  MAIL_SENDER_USERNAME: ""
+  MAIL_SENDER_PASSWORD: ""
