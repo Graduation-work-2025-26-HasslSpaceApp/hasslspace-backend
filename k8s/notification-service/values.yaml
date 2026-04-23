@@ -12,7 +12,7 @@ service:
 
 env:
   KAFKA_HOST: host.minikube.internal
-  KAFKA_PORT: "9092"
+  KAFKA_PORT: "29092"
 
   MAIL_SENDER_USERNAME: ""
   MAIL_SENDER_PASSWORD: ""
