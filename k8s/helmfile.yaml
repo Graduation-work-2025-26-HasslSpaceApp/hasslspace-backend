@@ -1,0 +1,35 @@
+releases:
+  - name: user-service
+    namespace: user-service
+    chart: ./user-service
+    values:
+      - ./user-service/values.yaml
+#      - ./user-service/values-dev.yaml
+
+  - name: server-service
+    namespace: server-service
+    chart: ./server-service
+    values:
+      - ./server-service/values.yaml
+#      - ./server-service/values-dev.yaml
+
+  - name: notification-service
+    namespace: notification-service
+    chart: ./notification-service
+    values:
+      - ./notification-service/values.yaml
+#      - ./notification-service/values-dev.yaml
+
+  - name: chat-service
+    namespace: chat-service
+    chart: ./chat-service
+    values:
+      - ./chat-service/values.yaml
+#      - ./chat-service/values-dev.yaml
+
+  - name: voice-service
+    namespace: voice-service
+    chart: ./voice-service
+    values:
+      - ./voice-service/values.yaml
+#      - ./voice-service/values-dev.yaml
