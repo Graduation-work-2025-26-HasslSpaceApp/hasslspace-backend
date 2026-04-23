@@ -5,3 +5,5 @@ metadata:
 data:
   LIVEKIT_HOST: {{ .Values.env.LIVEKIT_HOST | quote }}
   LIVEKIT_URL: {{ .Values.env.LIVEKIT_URL | quote }}
+
+  DEV_ENV_SERVER_PORT: "{{ .Values.service.port }}"
