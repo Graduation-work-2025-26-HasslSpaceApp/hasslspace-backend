@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.name }}-config
+data:
+  LIVEKIT_HOST: {{ .Values.env.LIVEKIT_HOST | quote }}
+  LIVEKIT_URL: {{ .Values.env.LIVEKIT_URL | quote }}
