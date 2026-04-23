@@ -7,5 +7,5 @@ spec:
   selector:
     app: {{ .Values.name }}
   ports:
-    - port: 8081
-      targetPort: 8081
+    - port: {{ .Values.service.port }}
+      targetPort: {{ .Values.service.port }}
