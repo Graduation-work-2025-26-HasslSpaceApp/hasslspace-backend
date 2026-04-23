@@ -1,0 +1,17 @@
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: hasslspace-require-jwt
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway
+  action: DENY
+  rules:
+    - from:
+        - source:
+            notRequestPrincipals: [ "*" ]  # Блокируем все запросы без валидного JWT
+      to:
+        - operation:
+            paths: [ "/api/user-service*" ]  # исключаем этот путь

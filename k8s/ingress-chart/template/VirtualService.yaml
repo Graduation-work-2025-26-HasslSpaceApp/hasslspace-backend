@@ -1,0 +1,47 @@
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: hasslspace-virtualservice
+  namespace: default
+spec:
+  hosts:
+    - "hasslspace.example.com"
+  gateways:
+    - hasslspace-gateway
+  http:
+    # User service (без JWT - исключаем из политики)
+    - match:
+        - uri:
+            prefix: "/api/user-service"
+      route:
+        - destination:
+            host: user-service
+            port:
+              number: 8081
+    # Server service (с JWT)
+    - match:
+        - uri:
+            prefix: "/api/server-service"
+      route:
+        - destination:
+            host: server-service
+            port:
+              number: 8082
+    # Chat service (с JWT)
+    - match:
+        - uri:
+            prefix: "/api/chat-service"
+      route:
+        - destination:
+            host: chat-service
+            port:
+              number: 8083
+    # Voice service (с JWT)
+    - match:
+        - uri:
+            prefix: "/api/voice-service"
+      route:
+        - destination:
+            host: voice-service
+            port:
+              number: 8084
