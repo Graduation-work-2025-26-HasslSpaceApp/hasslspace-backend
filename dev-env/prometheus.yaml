@@ -1,0 +1,47 @@
+global:
+  scrape_interval: 5s
+
+scrape_configs:
+  - job_name: 'user-service'
+    static_configs:
+      - targets: [ '192.168.65.254:8081' ]
+        labels:
+          service: 'user-service'
+    metrics_path: '/actuator/prometheus'
+    scheme: 'http'
+
+  - job_name: 'server-service'
+    static_configs:
+      - targets: [ '192.168.65.254:8082' ]
+        labels:
+          service: 'server-service'
+    metrics_path: '/actuator/prometheus'
+    scheme: 'http'
+
+  - job_name: 'chat-service'
+    static_configs:
+      - targets: [ '192.168.65.254:8083' ]
+        labels:
+          service: 'chat-service'
+    metrics_path: '/actuator/prometheus'
+    scheme: 'http'
+
+  - job_name: 'voice-service'
+    static_configs:
+      - targets: [ '192.168.65.254:8084' ]
+        labels:
+          service: 'voice-service'
+    metrics_path: '/actuator/prometheus'
+    scheme: 'http'
+
+  - job_name: 'notification-service'
+    static_configs:
+      - targets: [ '192.168.65.254:8085' ]
+        labels:
+          service: 'notification-service'
+    metrics_path: '/actuator/prometheus'
+    scheme: 'http'
+
+  - job_name: postgres
+    static_configs:
+      - targets: [ '192.168.65.254:9187' ]
