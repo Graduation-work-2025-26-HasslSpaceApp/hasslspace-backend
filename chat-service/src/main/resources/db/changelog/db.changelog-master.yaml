@@ -2,3 +2,6 @@ databaseChangeLog:
   - include:
       relativeToChangelogFile: true
       file: 01.000.00/db.changelog.yaml
+  - include:
+      relativeToChangelogFile: true
+      file: 01.000.01/db.changelog.yaml
