@@ -14,6 +14,10 @@ spring:
         config:
           notification-service:
             url: http://${DEV_ENV_NOTIFICATION_HOST}:${DEV_ENV_NOTIFICATION_PORT}
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
 
   kafka:
     topic:
