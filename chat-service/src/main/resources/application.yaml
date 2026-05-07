@@ -17,6 +17,10 @@ spring:
         config:
           centrifugo-service:
             url: http://${DEV_ENV_CENTRIFUGO_HOST}:${DEV_ENV_CENTRIFUGO_PORT}
+  servlet:
+    multipart:
+      max-file-size: 1024MB
+      max-request-size: 1024MB
 
 feign:
   centrifugo-api:
