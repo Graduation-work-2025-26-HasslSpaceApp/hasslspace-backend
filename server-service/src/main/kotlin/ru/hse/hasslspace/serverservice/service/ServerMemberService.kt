@@ -222,6 +222,7 @@ class ServerMemberService(
                     .body("Новый владелец должен быть участником сервера")
 
             val adminRoleId = serverRoleRepository.findAdminRoleIdByServerId(serverId)
+            val defaultRoleId = serverRoleRepository.findDefaultRoleByServerId(serverId)!!.id!!
 
             serverRepository.save(server.also { it.ownerId = newOwnerId })
 
@@ -245,15 +246,25 @@ class ServerMemberService(
                 )
             )
 
-            memberRoleRepository.save(
-                MemberRole(
-                    MemberRole.MemberRoleId(
-                        serverId = serverId,
-                        userId = currentUserId,
-                        roleId = serverRoleRepository.findDefaultRoleByServerId(serverId)!!.id!!
-                    )
+            val existingDefaultRole = memberRoleRepository.findById(
+                MemberRole.MemberRoleId(
+                    serverId = serverId,
+                    userId = currentUserId,
+                    roleId = defaultRoleId
                 )
             )
+
+            if (!existingDefaultRole.isPresent) {
+                memberRoleRepository.save(
+                    MemberRole(
+                        MemberRole.MemberRoleId(
+                            serverId = serverId,
+                            userId = currentUserId,
+                            roleId = defaultRoleId
+                        )
+                    )
+                )
+            }
 
             logger.info("User $currentUserId transferred ownership of server $serverId to $newOwnerId")
 
