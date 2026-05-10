@@ -1,0 +1,101 @@
+{
+  "info": {
+    "_postman_id": "e7189491-4820-45a6-9132-d9243c349f60",
+    "name": "Voice Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "33179481",
+    "_collection_link": "https://go.postman.co/collection/51477353-e7189491-4820-45a6-9132-d9243c349f60?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Получить токен",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc1NzQ5MTM0LCJleHAiOjE3NzgzNDExMzQsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.eBF9HRE_brkDszaeDTSlil4IBQ3GPYoQEIqOR7cGwok",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"alex\",\r\n    \"roomName\": \"05237F2A-7802-4AD8-B7DB-5EAA9F4FC467\",\r\n    \"roomType\": null\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}{{voice-service}}/token",
+          "host": [
+            "{{baseURL}}{{voice-service}}"
+          ],
+          "path": [
+            "token"
+          ]
+        },
+        "description": "Получить токен для подключения к голосовому каналу LiveKit"
+      },
+      "response": [
+        {
+          "name": "200 Получить токен",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"alex\",\r\n    \"roomName\": \"05237F2A-7802-4AD8-B7DB-5EAA9F4FC467\",\r\n    \"roomType\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{voice-service}}/token",
+              "host": [
+                "{{baseURL}}{{voice-service}}"
+              ],
+              "path": [
+                "token"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 12 Apr 2026 12:29:15 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/plain;charset=UTF-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "363"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJkZXZrZXkiLCJleHAiOjE3NzYwMTg1NTUsInN1YiI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsIm5hbWUiOiJhbGV4IiwidmlkZW8iOnsicm9vbUpvaW4iOnRydWUsInJvb20iOiIwNTIzN0YyQS03ODAyLTRBRDgtQjdEQi01RUFBOUY0RkM0NjciLCJjYW5QdWJsaXNoIjp0cnVlLCJjYW5TdWJzY3JpYmUiOnRydWV9LCJzaXAiOnt9fQ.7AfA0q-SWzSiQRaPAvtu09ZmfeZnYKHiQFrksXg6CFo"
+        }
+      ]
+    }
+  ]
+}

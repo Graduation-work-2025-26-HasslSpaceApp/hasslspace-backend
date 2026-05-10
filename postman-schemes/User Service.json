@@ -1,0 +1,1687 @@
+{
+  "info": {
+    "_postman_id": "972ddb95-afcd-4bd1-b6fe-37225393d237",
+    "name": "User Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "33179481",
+    "_collection_link": "https://go.postman.co/collection/33179481-972ddb95-afcd-4bd1-b6fe-37225393d237?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Вход и регистрация",
+      "item": [
+        {
+          "name": "Вход в систему",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/auth/login?email=user1@mail.com&password=password",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "auth",
+                "login"
+              ],
+              "query": [
+                {
+                  "key": "email",
+                  "value": "user1@mail.com"
+                },
+                {
+                  "key": "password",
+                  "value": "password"
+                }
+              ]
+            },
+            "description": "200 - успешно вошли\n\n40? - неверный имейл или пароль\n\n500 - ошибка сервера"
+          },
+          "response": [
+            {
+              "name": "200 Вход в систему",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/auth/login?email=user@mail.com&password=password",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "login"
+                  ],
+                  "query": [
+                    {
+                      "key": "email",
+                      "value": "user@mail.com"
+                    },
+                    {
+                      "key": "password",
+                      "value": "password"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:36:13 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "253"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc3MTMxMzczLCJleHAiOjE3Nzk3MjMzNzMsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.4X8qBesPGxdd-6ZN-8RAP2boRgDhCVGufzM0ZTN8gC0"
+            }
+          ]
+        },
+        {
+          "name": "Регистрация",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"email\": \"user1@mail.com\",\r\n  \"username\": \"username1\",\r\n  \"name\": \"name\",\r\n  \"password\": \"password\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/auth/register",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "auth",
+                "register"
+              ]
+            },
+            "description": "201 - зарегистрировали, отдали JWT\n\n40? - пользователь с таким имейлом уже существует\n\n40? - пользователь с таким никнеймом уже существует\n\n500 - ошибка сервера"
+          },
+          "response": [
+            {
+              "name": "201 Регистрация",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"email\": \"user2@mail.com\",\r\n  \"username\": \"username2\",\r\n  \"name\": \"name\",\r\n  \"password\": \"password\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/auth/register",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "auth",
+                    "register"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:36:38 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "255"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImYxMGRhMDE2LTQ1ZGYtNDg5OS1iNWQ1LWJiMDE0NDhlZjBiYiIsInN1YiI6InVzZXJuYW1lMiIsImlhdCI6MTc3NzEzMTM5NywiZXhwIjoxNzc5NzIzMzk3LCJpc3MiOiJzcHJpbmctc2VjdXJpdHkifQ.tuJTBRoCZwG_4DPWql1N6DO8VhCGz7hpQHFytEdaK3M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Верификация пользователя",
+      "item": [
+        {
+          "name": "Запросить код",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/users/me/verification",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "users",
+                "me",
+                "verification"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Запросить код",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/users/me/verification",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "users",
+                    "me",
+                    "verification"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:36:59 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "71"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "Код подтверждения отправлен на user@mail.com"
+            }
+          ]
+        },
+        {
+          "name": "Проверка верификации",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/users/me/verification/status",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "users",
+                "me",
+                "verification",
+                "status"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Проверка верификации",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/users/me/verification/status",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "users",
+                    "me",
+                    "verification",
+                    "status"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:39:49 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "false"
+            }
+          ]
+        },
+        {
+          "name": "Проверка кода",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/users/me/verification/confirm?code=274845",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "users",
+                "me",
+                "verification",
+                "confirm"
+              ],
+              "query": [
+                {
+                  "key": "code",
+                  "value": "274845"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Проверка кода",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/users/me/verification/confirm?code=839212",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "users",
+                    "me",
+                    "verification",
+                    "confirm"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "839212"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:40:25 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "66"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "Пользователь успешно верифицирован"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Управление профилем",
+      "item": [
+        {
+          "name": "Профиль пользователя",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/users/me",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "users",
+                "me"
+              ]
+            },
+            "description": "Получить\n\n| **id** | **String** |\n| --- | --- |\n| name | String |\n| email | String |\n| photoUrl | String |\n| username | String |\n| description | String |\n| status | String |"
+          },
+          "response": [
+            {
+              "name": "200 Профиль пользователя",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/users/me",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "users",
+                    "me"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:40:59 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n    \"username\": \"username\",\n    \"name\": \"alex\",\n    \"email\": \"user@mail.com\",\n    \"status\": \"ONLINE\",\n    \"photoUrl\": null,\n    \"description\": \"bla bla\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Обновить профиль",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": null,  \r\n  \"name\": \"alex\",\r\n  \"photoUrl\": null,\r\n  \"description\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/users/me",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "users",
+                "me"
+              ]
+            },
+            "description": "Эндпоинты для изменения: фото (photoUrl)/имени общедоступного (name)/описания (description)"
+          },
+          "response": [
+            {
+              "name": "200 Обновить профиль",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"username\": null,  \r\n  \"name\": \"alex\",\r\n  \"photoUrl\": null,\r\n  \"description\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/users/me",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "users",
+                    "me"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:41:25 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "46"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "Профиль успешно обновлен"
+            }
+          ]
+        },
+        {
+          "name": "Установить статус",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/users/me/status?status=OFFLINE",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "users",
+                "me",
+                "status"
+              ],
+              "query": [
+                {
+                  "key": "status",
+                  "value": "OFFLINE"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Установить статус",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/users/me/status?status=OFFLINE",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "users",
+                    "me",
+                    "status"
+                  ],
+                  "query": [
+                    {
+                      "key": "status",
+                      "value": "OFFLINE"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:42:00 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "44"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "Статус успешно обновлен"
+            }
+          ]
+        },
+        {
+          "name": "Добавить фото",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "uuid": "eb34e048-a69d-4c74-a357-acb39e3587f3",
+                  "src": "/D:/Photoes/BMrcuTPs00c.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/photos/user/upload?photoUrl",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "photos",
+                "user",
+                "upload"
+              ],
+              "query": [
+                {
+                  "key": "photoUrl",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Добавить фото",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "photo",
+                      "type": "file",
+                      "uuid": "eb34e048-a69d-4c74-a357-acb39e3587f3",
+                      "src": "/D:/Photoes/BMrcuTPs00c.jpg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/photos/user/upload",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "photos",
+                    "user",
+                    "upload"
+                  ],
+                  "query": [
+                    {
+                      "key": "photoUrl",
+                      "value": "",
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:43:31 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "87"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "https://storage.yandexcloud.net/s3-hasslspace/user/f848dc9e-95ea-4593-9965-620ed42f7834"
+            }
+          ]
+        },
+        {
+          "name": "Загрузить фото",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "uuid": "eb34e048-a69d-4c74-a357-acb39e3587f3",
+                  "src": "/D:/Photoes/BMrcuTPs00c.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/photos/user/download?key=user/872012f6-272c-4635-9113-7704921c9c50",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "photos",
+                "user",
+                "download"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "user/872012f6-272c-4635-9113-7704921c9c50"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Взаимодействие с пользователями",
+      "item": [
+        {
+          "name": "Получить профиль пользователя",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/users/profile?userId=eecc3380-b15f-4906-ba0e-00da49f5ece1",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "users",
+                "profile"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "eecc3380-b15f-4906-ba0e-00da49f5ece1"
+                }
+              ]
+            },
+            "description": "Здесь бы еще получать бы какой-то статус, это наш друг/не друг/висит заявка от него/висит заявка от нас в друзья\n\nПолучить:\n\n| **id** | **String** |\n| --- | --- |\n| name | String |\n| email | String |\n| photoUrl | String |\n| username | String |\n| description | String |\n| status | String |\n\n``` json\n{\n    \"id\": \"5dcdcfd4-899e-48d9-8b84-251fcf246e28\",\n    \"username\": \"username\",\n    \"name\": \"Alex\",\n    \"photoUrl\": null,\n    \"description\": \"Backend developer\",\n    \"friendStatus\": \"NONE\"\n}\n\n ```"
+          },
+          "response": [
+            {
+              "name": "200 Получить профиль пользователя",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/users/profile?userId=eecc3380-b15f-4906-ba0e-00da49f5ece1",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "users",
+                    "profile"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "eecc3380-b15f-4906-ba0e-00da49f5ece1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 05 Apr 2026 20:48:29 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"eecc3380-b15f-4906-ba0e-00da49f5ece1\",\n    \"username\": \"username1\",\n    \"name\": \"username1\",\n    \"photoUrl\": null,\n    \"description\": null,\n    \"friendStatus\": \"OUTGOING_REQUEST\",\n    \"status\": \"ONLINE\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Список друзей",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/users/me/friends",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "users",
+                "me",
+                "friends"
+              ]
+            },
+            "description": "получить список с инфой об айди, имя друга, уникальный username, фото, статус\n\n``` json\n[\n    {\n        \"id\": \"561027c0-f8cc-48ed-b058-28e6f3fb4c23\",\n        \"username\": \"username2\",\n        \"name\": \"username2\",\n        \"photoUrl\": null,\n        \"type\": \"OUTGOING_REQUEST\"\n    }\n]\n\n ```"
+          },
+          "response": [
+            {
+              "name": "200 Список друзей",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/users/me/friends",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "users",
+                    "me",
+                    "friends"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 05 Apr 2026 20:51:17 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": \"eecc3380-b15f-4906-ba0e-00da49f5ece1\",\n        \"username\": \"username1\",\n        \"name\": \"username1\",\n        \"photoUrl\": null,\n        \"type\": \"OUTGOING_REQUEST\",\n        \"status\": \"ONLINE\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Отправить запрос дружбы",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/users/me/friends?username=username1",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "users",
+                "me",
+                "friends"
+              ],
+              "query": [
+                {
+                  "key": "username",
+                  "value": "username1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Отправить запрос дружбы",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/users/me/friends?username=username2",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "users",
+                    "me",
+                    "friends"
+                  ],
+                  "query": [
+                    {
+                      "key": "username",
+                      "value": "username2"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:44:04 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "46"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "Запрос успешно отправлен"
+            }
+          ]
+        },
+        {
+          "name": "Ответ на запрос дружбы",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/friends/me/response?userId=5dcdcfd4-899e-48d9-8b84-251fcf246e28&status=ACCEPTED",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "friends",
+                "me",
+                "response"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28"
+                },
+                {
+                  "key": "status",
+                  "value": "ACCEPTED"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Ответ на запрос дружбы",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/friends/me/response?userId=a8ce4b51-e374-41eb-bc73-1702d8b48e17&status=ACCEPTED",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "friends",
+                    "me",
+                    "response"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "a8ce4b51-e374-41eb-bc73-1702d8b48e17"
+                    },
+                    {
+                      "key": "status",
+                      "value": "ACCEPTED"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:45:20 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "73"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "Ответ на запрос дружбы успешно обновлен"
+            }
+          ]
+        },
+        {
+          "name": "Заблокировать пользователя",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/users/block?userId=a8ce4b51-e374-41eb-bc73-1702d8b48e17",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "users",
+                "block"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "a8ce4b51-e374-41eb-bc73-1702d8b48e17"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Заблокировать пользователя",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/users/block?userId=a8ce4b51-e374-41eb-bc73-1702d8b48e17",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "users",
+                    "block"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "a8ce4b51-e374-41eb-bc73-1702d8b48e17"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:45:48 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "46"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "Запрос успешно отправлен"
+            }
+          ]
+        },
+        {
+          "name": "Удалить из друзей",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseURL}}{{user-service}}/users/me/friends/delete?userId=a8ce4b51-e374-41eb-bc73-1702d8b48e17",
+              "host": [
+                "{{baseURL}}{{user-service}}"
+              ],
+              "path": [
+                "users",
+                "me",
+                "friends",
+                "delete"
+              ],
+              "query": [
+                {
+                  "key": "userId",
+                  "value": "a8ce4b51-e374-41eb-bc73-1702d8b48e17"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Удалить из друзей",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": ""
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{user-service}}/users/me/friends/delete?userId=a8ce4b51-e374-41eb-bc73-1702d8b48e17",
+                  "host": [
+                    "{{baseURL}}{{user-service}}"
+                  ],
+                  "path": [
+                    "users",
+                    "me",
+                    "friends",
+                    "delete"
+                  ],
+                  "query": [
+                    {
+                      "key": "userId",
+                      "value": "a8ce4b51-e374-41eb-bc73-1702d8b48e17"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 25 Apr 2026 15:53:35 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "70"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                },
+                {
+                  "key": "X-Content-Type-Options",
+                  "value": "nosniff"
+                },
+                {
+                  "key": "X-XSS-Protection",
+                  "value": "0"
+                },
+                {
+                  "key": "Cache-Control",
+                  "value": "no-cache, no-store, max-age=0, must-revalidate"
+                },
+                {
+                  "key": "Pragma",
+                  "value": "no-cache"
+                },
+                {
+                  "key": "Expires",
+                  "value": "0"
+                },
+                {
+                  "key": "X-Frame-Options",
+                  "value": "DENY"
+                }
+              ],
+              "cookie": [],
+              "body": "Пользователь успешно удален из друзей"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImVlY2MzMzgwLWIxNWYtNDkwNi1iYTBlLTAwZGE0OWY1ZWNlMSIsInN1YiI6InVzZXJuYW1lMSIsImlhdCI6MTc3ODE2NDk3NCwiZXhwIjoxNzgwNzU2OTc0LCJpc3MiOiJzcHJpbmctc2VjdXJpdHkifQ.U06Ph_4fFHtF8unMJVhWo3Ku6eDYCHFeuhU_yK-PR5s",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}

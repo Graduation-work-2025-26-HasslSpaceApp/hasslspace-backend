@@ -1,0 +1,1112 @@
+{
+  "info": {
+    "_postman_id": "5bd260ab-d5a7-4696-a395-feb654b424f9",
+    "name": "Chat Service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "33179481",
+    "_collection_link": "https://go.postman.co/collection/51477353-5bd260ab-d5a7-4696-a395-feb654b424f9?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Получить токен для подключения",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc2MzM5NzE2LCJleHAiOjE3Nzg5MzE3MTYsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.ImDSG7d1p_0zFcfNlxBYLuPNjymcUm2FF01v49zUN5s",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}{{chat-service}}/token",
+          "host": [
+            "{{baseURL}}{{chat-service}}"
+          ],
+          "path": [
+            "token"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "Получить токен для подключения",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/token",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "token"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 16 Apr 2026 11:42:08 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/plain;charset=UTF-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "264"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhOGNlNGI1MS1lMzc0LTQxZWItYmM3My0xNzAyZDhiNDhlMTciLCJpYXQiOjE3NzYzMzk3MjgsImV4cCI6MTc3ODkzMTcyOCwidXNlcklkIjoiYThjZTRiNTEtZTM3NC00MWViLWJjNzMtMTcwMmQ4YjQ4ZTE3IiwiaXNzIjoiY2hhdC1zZXJ2aWNlIn0.hX80YvxFFHrKrrhjF7lCCplYiChb2SWkiEVsxcc_zO4"
+        }
+      ]
+    },
+    {
+      "name": "Начать чат с пользователем",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc1NzQ5MTM0LCJleHAiOjE3NzgzNDExMzQsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.eBF9HRE_brkDszaeDTSlil4IBQ3GPYoQEIqOR7cGwok",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}{{chat-service}}/chats?targetUserId=eecc3380-b15f-4906-ba0e-00da49f5ece1",
+          "host": [
+            "{{baseURL}}{{chat-service}}"
+          ],
+          "path": [
+            "chats"
+          ],
+          "query": [
+            {
+              "key": "targetUserId",
+              "value": "eecc3380-b15f-4906-ba0e-00da49f5ece1"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "201 Начать чат с пользователем",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/chats?targetUserId=eecc3380-b15f-4906-ba0e-00da49f5ece1",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "chats"
+              ],
+              "query": [
+                {
+                  "key": "targetUserId",
+                  "value": "eecc3380-b15f-4906-ba0e-00da49f5ece1"
+                }
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 14 Apr 2026 22:01:34 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/plain;charset=UTF-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "36"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "187cf652-b22b-4c85-bc90-d4aa64356a11"
+        }
+      ]
+    },
+    {
+      "name": "Получить список приватных чатов",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc1NDIxMDMxLCJleHAiOjE3NzgwMTMwMzEsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.3fdIsvWmpe_mi0tysRQb-aCq7HHFb_cfqfiidsADizc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{baseURL}}{{chat-service}}/chats",
+          "host": [
+            "{{baseURL}}{{chat-service}}"
+          ],
+          "path": [
+            "chats"
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Получить список приватных чатов",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/chats",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "chats"
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 14 Apr 2026 22:23:41 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"name\": null,\n        \"chatMembers\": [\n            {\n                \"id\": \"eecc3380-b15f-4906-ba0e-00da49f5ece1\",\n                \"name\": \"username1\",\n                \"username\": \"username1\",\n                \"status\": \"ONLINE\",\n                \"photoUrl\": null\n            },\n            {\n                \"id\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n                \"name\": \"alex\",\n                \"username\": \"username\",\n                \"status\": \"ONLINE\",\n                \"photoUrl\": null\n            }\n        ]\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Получить конкретный чат",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc1NDIxMDMxLCJleHAiOjE3NzgwMTMwMzEsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.3fdIsvWmpe_mi0tysRQb-aCq7HHFb_cfqfiidsADizc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{baseURL}}{{chat-service}}/chats?chatId=a4c3e09c-9747-43dc-8b99-58375bf0343e",
+          "host": [
+            "{{baseURL}}{{chat-service}}"
+          ],
+          "path": [
+            "chats"
+          ],
+          "query": [
+            {
+              "key": "chatId",
+              "value": "a4c3e09c-9747-43dc-8b99-58375bf0343e"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Получить конкретный чат",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/chats?chatId=a4c3e09c-9747-43dc-8b99-58375bf0343e",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "chats"
+              ],
+              "query": [
+                {
+                  "key": "chatId",
+                  "value": "a4c3e09c-9747-43dc-8b99-58375bf0343e"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 14 Apr 2026 22:24:29 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "{\n    \"id\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n    \"name\": null,\n    \"chatMembers\": [\n        {\n            \"id\": \"eecc3380-b15f-4906-ba0e-00da49f5ece1\",\n            \"name\": \"username1\",\n            \"username\": \"username1\",\n            \"status\": \"ONLINE\",\n            \"photoUrl\": null\n        },\n        {\n            \"id\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n            \"name\": \"alex\",\n            \"username\": \"username\",\n            \"status\": \"ONLINE\",\n            \"photoUrl\": null\n        }\n    ]\n}"
+        }
+      ]
+    },
+    {
+      "name": "Отправить сообщение в чат",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc2MzM5NzE2LCJleHAiOjE3Nzg5MzE3MTYsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.ImDSG7d1p_0zFcfNlxBYLuPNjymcUm2FF01v49zUN5s",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"content\": \"бла бла бла\",\r\n    \"fileUrl\": null,\r\n    \"createdAt\": \"2026-01-15T10:30:00\",\r\n    \"editedAt\": null\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseURL}}{{chat-service}}/chats/message?chatId=a4c3e09c-9747-43dc-8b99-58375bf0343e",
+          "host": [
+            "{{baseURL}}{{chat-service}}"
+          ],
+          "path": [
+            "chats",
+            "message"
+          ],
+          "query": [
+            {
+              "key": "chatId",
+              "value": "a4c3e09c-9747-43dc-8b99-58375bf0343e"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Отправить сообщение в чат",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"content\": \"бла бла бла\",\r\n    \"fileUrl\": null,\r\n    \"createdAt\": \"2026-01-15T10:30:00\",\r\n    \"editedAt\": null\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/chats/message?chatId=a4c3e09c-9747-43dc-8b99-58375bf0343e",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "chats",
+                "message"
+              ],
+              "query": [
+                {
+                  "key": "chatId",
+                  "value": "a4c3e09c-9747-43dc-8b99-58375bf0343e"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Thu, 16 Apr 2026 13:33:01 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/plain;charset=UTF-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "39"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "Сообщение отправлено"
+        }
+      ]
+    },
+    {
+      "name": "Получить историю сообщений",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc2NjA4ODgxLCJleHAiOjE3NzkyMDA4ODEsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.Lcn_Fyl6WnvoL0QgoR_adfQ2RjbcwitLVr4snizn1gc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}{{chat-service}}/chats/message/history?chatId=a4c3e09c-9747-43dc-8b99-58375bf0343e&fromMessageId=&fromDate=&toDate=2026-01-15T10:33:00&limit",
+          "host": [
+            "{{baseURL}}{{chat-service}}"
+          ],
+          "path": [
+            "chats",
+            "message",
+            "history"
+          ],
+          "query": [
+            {
+              "key": "chatId",
+              "value": "a4c3e09c-9747-43dc-8b99-58375bf0343e"
+            },
+            {
+              "key": "fromMessageId",
+              "value": ""
+            },
+            {
+              "key": "fromDate",
+              "value": ""
+            },
+            {
+              "key": "toDate",
+              "value": "2026-01-15T10:33:00"
+            },
+            {
+              "key": "limit",
+              "value": null
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Последние N сообщений (по умолчанию 50)",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/chats/message/history?chatId=a4c3e09c-9747-43dc-8b99-58375bf0343e&fromMessageId&fromDate&toDate&limit",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "chats",
+                "message",
+                "history"
+              ],
+              "query": [
+                {
+                  "key": "chatId",
+                  "value": "a4c3e09c-9747-43dc-8b99-58375bf0343e"
+                },
+                {
+                  "key": "fromMessageId",
+                  "value": null
+                },
+                {
+                  "key": "fromDate",
+                  "value": null
+                },
+                {
+                  "key": "toDate",
+                  "value": null
+                },
+                {
+                  "key": "limit",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 21 Apr 2026 16:33:08 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": \"543be5bf-775b-4648-b858-6976bcde1ef7\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:30:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"1707b9cb-68fa-4bbe-922e-19bfa8787f28\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:31:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"45a8ccd1-d844-4867-ba46-fc5110430207\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:32:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"c55b4d95-8165-46cf-8bcf-90f39e4e0c59\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:33:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"c77d6edc-0385-43e8-b8d6-9e64a509bef2\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:34:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"1c962f6b-0adc-474e-a239-7f4a41bd7bba\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:35:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"5fa3054e-8cda-4d3a-9b54-1644afca39ae\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:36:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"4bb2fdfe-2f53-45c3-97c5-dc88749a4af2\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:37:00\",\n        \"editedAt\": null\n    }\n]"
+        },
+        {
+          "name": "200 Все сообщения начиная с fromMessageId",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/chats/message/history?chatId=a4c3e09c-9747-43dc-8b99-58375bf0343e&fromMessageId=c77d6edc-0385-43e8-b8d6-9e64a509bef2&fromDate&toDate&limit",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "chats",
+                "message",
+                "history"
+              ],
+              "query": [
+                {
+                  "key": "chatId",
+                  "value": "a4c3e09c-9747-43dc-8b99-58375bf0343e"
+                },
+                {
+                  "key": "fromMessageId",
+                  "value": "c77d6edc-0385-43e8-b8d6-9e64a509bef2"
+                },
+                {
+                  "key": "fromDate",
+                  "value": null
+                },
+                {
+                  "key": "toDate",
+                  "value": null
+                },
+                {
+                  "key": "limit",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 21 Apr 2026 16:34:53 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": \"c77d6edc-0385-43e8-b8d6-9e64a509bef2\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:34:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"1c962f6b-0adc-474e-a239-7f4a41bd7bba\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:35:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"5fa3054e-8cda-4d3a-9b54-1644afca39ae\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:36:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"4bb2fdfe-2f53-45c3-97c5-dc88749a4af2\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:37:00\",\n        \"editedAt\": null\n    }\n]"
+        },
+        {
+          "name": "200 Сообщения за указанный временной период",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/chats/message/history?chatId=a4c3e09c-9747-43dc-8b99-58375bf0343e&fromMessageId=&fromDate=2026-01-15T10:33:00&toDate=2026-01-15T10:35:00&limit",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "chats",
+                "message",
+                "history"
+              ],
+              "query": [
+                {
+                  "key": "chatId",
+                  "value": "a4c3e09c-9747-43dc-8b99-58375bf0343e"
+                },
+                {
+                  "key": "fromMessageId",
+                  "value": ""
+                },
+                {
+                  "key": "fromDate",
+                  "value": "2026-01-15T10:33:00"
+                },
+                {
+                  "key": "toDate",
+                  "value": "2026-01-15T10:35:00"
+                },
+                {
+                  "key": "limit",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 21 Apr 2026 16:38:32 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": \"c55b4d95-8165-46cf-8bcf-90f39e4e0c59\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:33:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"c77d6edc-0385-43e8-b8d6-9e64a509bef2\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:34:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"1c962f6b-0adc-474e-a239-7f4a41bd7bba\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:35:00\",\n        \"editedAt\": null\n    }\n]"
+        },
+        {
+          "name": "200 Сообщения с этой даты и позже",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/chats/message/history?chatId=a4c3e09c-9747-43dc-8b99-58375bf0343e&fromMessageId=&fromDate=2026-01-15T10:35:00&toDate=&limit",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "chats",
+                "message",
+                "history"
+              ],
+              "query": [
+                {
+                  "key": "chatId",
+                  "value": "a4c3e09c-9747-43dc-8b99-58375bf0343e"
+                },
+                {
+                  "key": "fromMessageId",
+                  "value": ""
+                },
+                {
+                  "key": "fromDate",
+                  "value": "2026-01-15T10:35:00"
+                },
+                {
+                  "key": "toDate",
+                  "value": ""
+                },
+                {
+                  "key": "limit",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 21 Apr 2026 16:39:28 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": \"1c962f6b-0adc-474e-a239-7f4a41bd7bba\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:35:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"5fa3054e-8cda-4d3a-9b54-1644afca39ae\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:36:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"4bb2fdfe-2f53-45c3-97c5-dc88749a4af2\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:37:00\",\n        \"editedAt\": null\n    }\n]"
+        },
+        {
+          "name": "200  Сообщения до этой даты",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/chats/message/history?chatId=a4c3e09c-9747-43dc-8b99-58375bf0343e&fromMessageId=&fromDate=&toDate=2026-01-15T10:33:00&limit",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "chats",
+                "message",
+                "history"
+              ],
+              "query": [
+                {
+                  "key": "chatId",
+                  "value": "a4c3e09c-9747-43dc-8b99-58375bf0343e"
+                },
+                {
+                  "key": "fromMessageId",
+                  "value": ""
+                },
+                {
+                  "key": "fromDate",
+                  "value": ""
+                },
+                {
+                  "key": "toDate",
+                  "value": "2026-01-15T10:33:00"
+                },
+                {
+                  "key": "limit",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Tue, 21 Apr 2026 16:40:22 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "key": "Transfer-Encoding",
+              "value": "chunked"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "[\n    {\n        \"id\": \"543be5bf-775b-4648-b858-6976bcde1ef7\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:30:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"1707b9cb-68fa-4bbe-922e-19bfa8787f28\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:31:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"45a8ccd1-d844-4867-ba46-fc5110430207\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:32:00\",\n        \"editedAt\": null\n    },\n    {\n        \"id\": \"c55b4d95-8165-46cf-8bcf-90f39e4e0c59\",\n        \"chatId\": \"a4c3e09c-9747-43dc-8b99-58375bf0343e\",\n        \"userId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"content\": \"бла бла бла\",\n        \"fileUrl\": null,\n        \"createdAt\": \"2026-01-15T10:33:00\",\n        \"editedAt\": null\n    }\n]"
+        }
+      ]
+    },
+    {
+      "name": "Загрузить файл",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc2NjA4ODgxLCJleHAiOjE3NzkyMDA4ODEsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.Lcn_Fyl6WnvoL0QgoR_adfQ2RjbcwitLVr4snizn1gc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "file",
+              "type": "file",
+              "uuid": "eb34e048-a69d-4c74-a357-acb39e3587f3",
+              "src": "/D:/Downloads/0-2-Форма рабочего плана ПДП 2026.docx"
+            }
+          ]
+        },
+        "url": {
+          "raw": "{{baseURL}}{{chat-service}}/file/upload?photoUrl&fileType=FILE",
+          "host": [
+            "{{baseURL}}{{chat-service}}"
+          ],
+          "path": [
+            "file",
+            "upload"
+          ],
+          "query": [
+            {
+              "key": "photoUrl",
+              "value": null
+            },
+            {
+              "key": "fileType",
+              "value": "FILE"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Загрузить файл",
+          "originalRequest": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "uuid": "eb34e048-a69d-4c74-a357-acb39e3587f3",
+                  "src": "/D:/Downloads/0-2-Форма рабочего плана ПДП 2026.docx"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/file/upload?photoUrl&fileType=FILE",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "file",
+                "upload"
+              ],
+              "query": [
+                {
+                  "key": "photoUrl",
+                  "value": null
+                },
+                {
+                  "key": "fileType",
+                  "value": "FILE"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Sun, 19 Apr 2026 14:42:23 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/plain;charset=UTF-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "123"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "https://storage.yandexcloud.net/s3-hasslspace/chat-service/file/0-2-Форма_рабочего_плана_ПДП_2026.docx"
+        }
+      ]
+    },
+    {
+      "name": "Создать чат канала",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc2NjA4ODgxLCJleHAiOjE3NzkyMDA4ODEsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.Lcn_Fyl6WnvoL0QgoR_adfQ2RjbcwitLVr4snizn1gc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}{{chat-service}}/chats?channelId=6a5addd4-7d91-4666-a1db-c90ee5c295e1",
+          "host": [
+            "{{baseURL}}{{chat-service}}"
+          ],
+          "path": [
+            "chats"
+          ],
+          "query": [
+            {
+              "key": "channelId",
+              "value": "6a5addd4-7d91-4666-a1db-c90ee5c295e1"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Создать чат канала",
+          "originalRequest": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/chats?channelId=6a5addd4-7d91-4666-a1db-c90ee5c295e1",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "chats"
+              ],
+              "query": [
+                {
+                  "key": "channelId",
+                  "value": "6a5addd4-7d91-4666-a1db-c90ee5c295e1"
+                }
+              ]
+            }
+          },
+          "status": "Created",
+          "code": 201,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 20 Apr 2026 14:54:31 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/plain;charset=UTF-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "36"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "b9b98ada-35c4-4dbe-b02d-a5f7184a72ae"
+        }
+      ]
+    },
+    {
+      "name": "Получить чат канала",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc2NjA4ODgxLCJleHAiOjE3NzkyMDA4ODEsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.Lcn_Fyl6WnvoL0QgoR_adfQ2RjbcwitLVr4snizn1gc",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseURL}}{{chat-service}}/chats?channelId=6a5addd4-7d91-4666-a1db-c90ee5c295e1",
+          "host": [
+            "{{baseURL}}{{chat-service}}"
+          ],
+          "path": [
+            "chats"
+          ],
+          "query": [
+            {
+              "key": "channelId",
+              "value": "6a5addd4-7d91-4666-a1db-c90ee5c295e1"
+            }
+          ]
+        }
+      },
+      "response": [
+        {
+          "name": "200 Получить чат канала",
+          "originalRequest": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{chat-service}}/chats?channelId=6a5addd4-7d91-4666-a1db-c90ee5c295e1",
+              "host": [
+                "{{baseURL}}{{chat-service}}"
+              ],
+              "path": [
+                "chats"
+              ],
+              "query": [
+                {
+                  "key": "channelId",
+                  "value": "6a5addd4-7d91-4666-a1db-c90ee5c295e1"
+                }
+              ]
+            }
+          },
+          "status": "OK",
+          "code": 200,
+          "_postman_previewlanguage": null,
+          "header": [
+            {
+              "key": "Server",
+              "value": "openresty/1.27.1.2"
+            },
+            {
+              "key": "Date",
+              "value": "Mon, 20 Apr 2026 21:24:04 GMT"
+            },
+            {
+              "key": "Content-Type",
+              "value": "text/plain;charset=UTF-8"
+            },
+            {
+              "key": "Content-Length",
+              "value": "36"
+            },
+            {
+              "key": "Connection",
+              "value": "keep-alive"
+            }
+          ],
+          "cookie": [],
+          "body": "b9b98ada-35c4-4dbe-b02d-a5f7184a72ae"
+        }
+      ]
+    }
+  ]
+}

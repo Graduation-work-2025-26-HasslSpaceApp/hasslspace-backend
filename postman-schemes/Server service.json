@@ -1,0 +1,2870 @@
+{
+  "info": {
+    "_postman_id": "344ed028-3c39-41a9-aca2-d1c1b820b93a",
+    "name": "Server service",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "33179481",
+    "_collection_link": "https://go.postman.co/collection/33179481-344ed028-3c39-41a9-aca2-d1c1b820b93a?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Серверы",
+      "item": [
+        {
+          "name": "Создать сервер",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzczODMwMjU2LCJleHAiOjE3NzY0MjIyNTYsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.j_sT_yXPRnnOuNZPcpKMlgQx-KVxvqMa8YH_2iU9dQI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers?serverName=name&username=username",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers"
+              ],
+              "query": [
+                {
+                  "key": "serverName",
+                  "value": "name"
+                },
+                {
+                  "key": "username",
+                  "value": "username"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201 Создать сервер",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "a8ce4b51-e374-41eb-bc73-1702d8b48e17",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"name\",\r\n    \"iconUrl\": null\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "40"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 05 Apr 2026 21:48:30 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Сервер успешно создан"
+            }
+          ]
+        },
+        {
+          "name": "Получить сервер",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Получить сервер",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Mar 2026 14:16:06 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"504d9a73-a5ec-4b32-b496-ea42f8f889e9\",\n    \"name\": \"name\",\n    \"photoUrl\": null,\n    \"members\": [\n        {\n            \"id\": \"5dcdcfd4-899e-48d9-8b84-251fcf246e28\",\n            \"name\": \"username\",\n            \"username\": \"username\",\n            \"status\": \"OFFLINE\",\n            \"photoUrl\": null,\n            \"roles\": [\n                {\n                    \"id\": \"aaec4bb5-d83f-436c-8237-6290331cb7fb\",\n                    \"name\": \"Admin\",\n                    \"color\": \"#99AAB5\"\n                }\n            ]\n        }\n    ],\n    \"isOwner\": true,\n    \"textChannels\": [],\n    \"voiceChannels\": []\n}"
+            }
+          ]
+        },
+        {
+          "name": "Получить список серверов",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzczODMwMjU2LCJleHAiOjE3NzY0MjIyNTYsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.j_sT_yXPRnnOuNZPcpKMlgQx-KVxvqMa8YH_2iU9dQI",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers"
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Получить список серверов",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "[\r\n    {\r\n        \"serverId\": \"586ee274-274d-4864-bca0-45543ec7d0ee\",\r\n        \"serverName\": \"name\",\r\n        \"photoUrl\": null\r\n    }\r\n]\r\n"
+            }
+          ]
+        },
+        {
+          "name": "Получить список общих серверов",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImVlY2MzMzgwLWIxNWYtNDkwNi1iYTBlLTAwZGE0OWY1ZWNlMSIsInN1YiI6InVzZXJuYW1lMSIsImlhdCI6MTc3NTc0MzczOCwiZXhwIjoxNzc4MzM1NzM4LCJpc3MiOiJzcHJpbmctc2VjdXJpdHkifQ.GIgA47fHKJuoJ40FP8AwhJPEsWXJU_4GDXqWMAwj3P4",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers?friendId=a8ce4b51-e374-41eb-bc73-1702d8b48e17",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers"
+              ],
+              "query": [
+                {
+                  "key": "friendId",
+                  "value": "a8ce4b51-e374-41eb-bc73-1702d8b48e17"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Получить список общих серверов",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers?friendId=a8ce4b51-e374-41eb-bc73-1702d8b48e17",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers"
+                  ],
+                  "query": [
+                    {
+                      "key": "friendId",
+                      "value": "a8ce4b51-e374-41eb-bc73-1702d8b48e17",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 09 Apr 2026 14:10:44 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"serverId\": \"6afa0ca5-bd6f-4364-b843-3eb675530a97\",\n        \"serverName\": \"Блаблабла\",\n        \"photoUrl\": null\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Удалить сервер",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers?serverId=586ee274-274d-4864-bca0-45543ec7d0ee",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "586ee274-274d-4864-bca0-45543ec7d0ee"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Удалить сервер",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers?serverId=586ee274-274d-4864-bca0-45543ec7d0ee",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "586ee274-274d-4864-bca0-45543ec7d0ee"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "40"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 14 Mar 2026 21:46:03 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Сервер успешно удален"
+            }
+          ]
+        },
+        {
+          "name": "Обновить сервер",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "a8ce4b51-e374-41eb-bc73-1702d8b48e17",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"Блаблабла\",\r\n    \"iconUrl\": null\r\n}\r\n\r\n// каждое поле nullable, по аналогии с запросом на изменение профиля",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Обновить сервер",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "a8ce4b51-e374-41eb-bc73-1702d8b48e17",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"Блаблабла\",\r\n    \"photoUrl\": null\r\n}\r\n\r\n// каждое поле nullable, по аналогии с запросом на изменение профиля",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "44"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 05 Apr 2026 22:09:47 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Сервер успешно обновлен"
+            }
+          ]
+        },
+        {
+          "name": "Добавить фото",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "PUT",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "a8ce4b51-e374-41eb-bc73-1702d8b48e17",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "uuid": "eb34e048-a69d-4c74-a357-acb39e3587f3",
+                  "src": "/D:/Photoes/photo_2023-04-20_22-48-00.jpg"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/photos/server/upload",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "photos",
+                "server",
+                "upload"
+              ],
+              "query": [
+                {
+                  "key": "photoUrl",
+                  "value": null,
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Добавить фото",
+              "originalRequest": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "a8ce4b51-e374-41eb-bc73-1702d8b48e17",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "key": "photo",
+                      "type": "file",
+                      "uuid": "eb34e048-a69d-4c74-a357-acb39e3587f3",
+                      "src": "/D:/Photoes/photo_2023-04-20_22-48-00.jpg"
+                    }
+                  ]
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/photos/server/upload",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "photos",
+                    "server",
+                    "upload"
+                  ],
+                  "query": [
+                    {
+                      "key": "photoUrl",
+                      "value": null,
+                      "disabled": true
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "89"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sun, 05 Apr 2026 21:30:42 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "https://storage.yandexcloud.net/s3-hasslspace/server/c2d5bcc8-e91c-4202-a3f5-68998fb60ed9"
+            }
+          ]
+        },
+        {
+          "name": "Загрузить фото",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6IjVkY2RjZmQ0LTg5OWUtNDhkOS04Yjg0LTI1MWZjZjI0NmUyOCIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzcxNTg2NDcyLCJleHAiOjE3NzQxNzg0NzIsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.g1hXqbzq0b9FkX25oVH03pWtrI4cz-yfB0ZmYncqFNE",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "photo",
+                  "type": "file",
+                  "uuid": "eb34e048-a69d-4c74-a357-acb39e3587f3",
+                  "src": "/D:/Photoes/BMrcuTPs00c.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/photos/server/download?key=server/c2d5bcc8-e91c-4202-a3f5-68998fb60ed9",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "photos",
+                "server",
+                "download"
+              ],
+              "query": [
+                {
+                  "key": "key",
+                  "value": "server/c2d5bcc8-e91c-4202-a3f5-68998fb60ed9"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Участники сервера",
+      "item": [
+        {
+          "name": "Присоединиться к серверу",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "561027c0-f8cc-48ed-b058-28e6f3fb4c23",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/invites/join?code=7FF1CE0C",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "invites",
+                "join"
+              ],
+              "query": [
+                {
+                  "key": "code",
+                  "value": "7FF1CE0C"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Присоединиться к серверу",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "561027c0-f8cc-48ed-b058-28e6f3fb4c23",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/invites/join?code=7FF1CE0C",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "invites",
+                    "join"
+                  ],
+                  "query": [
+                    {
+                      "key": "code",
+                      "value": "7FF1CE0C"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "Вы успешно присоединились к серверу"
+            }
+          ]
+        },
+        {
+          "name": "Покинуть сервер",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJyb2xlIjoiQURNSU4iLCJ1c2VySWQiOiI0NDcxMDJkYS0wYjJjLTQ5MWEtYTAwNS1kOTA1ZjZlZmU5MzIiLCJzdWIiOiJ5ZXZzeXVrb3ZhbGVrc0BnbWFpbC5jb20iLCJpYXQiOjE3NDg5Njg1OTksImV4cCI6MTc1MTU2MDU5OSwiaXNzIjoic3ByaW5nLXNlY3VyaXR5In0.IkifEkQoaTWJZ0b1ZKF0XeedOTqhaHKa7x728sTr6rjmO1P8J9Y0vTfsshq6aQ5d",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "561027c0-f8cc-48ed-b058-28e6f3fb4c23",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/members/me?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "members",
+                "me"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Покинуть сервер",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "561027c0-f8cc-48ed-b058-28e6f3fb4c23",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/members/me?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "members",
+                    "me"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "",
+              "header": [],
+              "cookie": [
+                {
+                  "expires": "Invalid Date",
+                  "domain": "",
+                  "path": ""
+                }
+              ],
+              "body": "Вы успешно покинули сервер"
+            }
+          ]
+        },
+        {
+          "name": "Список участников сервера",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "561027c0-f8cc-48ed-b058-28e6f3fb4c23",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/members?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "members"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Список участников сервера",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "561027c0-f8cc-48ed-b058-28e6f3fb4c23",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/members?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "members"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 14 Mar 2026 21:53:26 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": \"5dcdcfd4-899e-48d9-8b84-251fcf246e28\",\n        \"name\": \"username\",\n        \"username\": \"username\",\n        \"status\": \"OFFLINE\",\n        \"photoUrl\": null,\n        \"roles\": [\n            {\n                \"id\": \"aaec4bb5-d83f-436c-8237-6290331cb7fb\",\n                \"name\": \"Admin\",\n                \"color\": \"#99AAB5\"\n            }\n        ]\n    },\n    {\n        \"id\": \"561027c0-f8cc-48ed-b058-28e6f3fb4c23\",\n        \"name\": \"username2\",\n        \"username\": \"username2\",\n        \"status\": \"ONLINE\",\n        \"photoUrl\": null,\n        \"roles\": [\n            {\n                \"id\": \"3696977f-a123-4b58-9ef4-a251f7005c60\",\n                \"name\": \"Member\",\n                \"color\": \"#99AAB5\"\n            }\n        ]\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Выгнать участника",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/members?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9&targetUserId=561027c0-f8cc-48ed-b058-28e6f3fb4c23",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "members"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                },
+                {
+                  "key": "targetUserId",
+                  "value": "561027c0-f8cc-48ed-b058-28e6f3fb4c23"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Выгнать участника",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/members?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9&targetUserId=561027c0-f8cc-48ed-b058-28e6f3fb4c23",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "members"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    },
+                    {
+                      "key": "targetUserId",
+                      "value": "561027c0-f8cc-48ed-b058-28e6f3fb4c23"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "62"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 14 Mar 2026 21:56:17 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Участник успешно удален с сервера"
+            }
+          ]
+        },
+        {
+          "name": "Список друзей, которых НЕТ на сервере",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/members/not-in-server?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "members",
+                "not-in-server"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Список друзей, которых НЕТ на сервере",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/members/not-in-server?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "members",
+                    "not-in-server"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Sat, 14 Mar 2026 22:32:53 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": \"561027c0-f8cc-48ed-b058-28e6f3fb4c23\",\n        \"username\": \"username2\",\n        \"name\": \"username2\",\n        \"photoUrl\": null,\n        \"type\": \"FRIEND\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Передать права на сервер",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc1NzQ5MTM0LCJleHAiOjE3NzgzNDExMzQsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.eBF9HRE_brkDszaeDTSlil4IBQ3GPYoQEIqOR7cGwok",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/members/change-owner?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97&newOwnerId=eecc3380-b15f-4906-ba0e-00da49f5ece1",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "members",
+                "change-owner"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                },
+                {
+                  "key": "newOwnerId",
+                  "value": "eecc3380-b15f-4906-ba0e-00da49f5ece1",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Передать права на сервер",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/members/change-owner?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97&newOwnerId=eecc3380-b15f-4906-ba0e-00da49f5ece1",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "members",
+                    "change-owner"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                    },
+                    {
+                      "key": "newOwnerId",
+                      "value": "eecc3380-b15f-4906-ba0e-00da49f5ece1",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 09 Apr 2026 17:09:56 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "69"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Права собственности успешно переданы"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Приглашения",
+      "item": [
+        {
+          "name": "Создать приглашение",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc1NzQzNjQ3LCJleHAiOjE3NzgzMzU2NDcsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.sUPQAJ1-BWm5eNzRIFBI4VTJn4wavKJJ9RIBcqfEjrQ",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/invites?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "invites"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201 Создать приглашение",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/invites?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "invites"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 09 Apr 2026 14:08:36 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"code\": \"D25B8584\",\n    \"serverId\": \"6afa0ca5-bd6f-4364-b843-3eb675530a97\",\n    \"creatorId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n    \"expiresAt\": \"2026-04-16T17:08:36.114634\",\n    \"serverName\": \"Блаблабла\",\n    \"creatorName\": \"alex\",\n    \"inviteUrl\": \"http://localhost:8080/api/server-service/invites/join?code=D25B8584\"\n}"
+            }
+          ]
+        },
+        {
+          "name": "Список активных приглашений",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc1NzQ5MTM0LCJleHAiOjE3NzgzNDExMzQsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.eBF9HRE_brkDszaeDTSlil4IBQ3GPYoQEIqOR7cGwok",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/invites?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "invites"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Список активных приглашений",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/invites?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "invites"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 09 Apr 2026 16:00:07 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"code\": \"E9201030\",\n        \"serverId\": \"6afa0ca5-bd6f-4364-b843-3eb675530a97\",\n        \"creatorId\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n        \"expiresAt\": \"2026-04-16T18:59:55.560272\",\n        \"serverName\": \"Блаблабла\",\n        \"creatorName\": \"alex\",\n        \"inviteUrl\": \"http://localhost:8080/api/server-service/invites/join?code=E9201030\"\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Удалить приглашение",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc1NzQ5MTM0LCJleHAiOjE3NzgzNDExMzQsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.eBF9HRE_brkDszaeDTSlil4IBQ3GPYoQEIqOR7cGwok",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/invites?inviteCode=D25B8584",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "invites"
+              ],
+              "query": [
+                {
+                  "key": "inviteCode",
+                  "value": "D25B8584"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Удалить приглашение",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/invites?inviteCode=D25B8584",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "invites"
+                  ],
+                  "query": [
+                    {
+                      "key": "inviteCode",
+                      "value": "D25B8584"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 09 Apr 2026 15:39:30 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "75"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Приглашение с кодом D25B8584 успешно удалено"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Роли",
+      "item": [
+        {
+          "name": "Создать роль",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"role2\",\r\n  \"color\": \"color\",\r\n  \"position\": 2\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/roles?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "roles"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Роль успешно создана",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"name\": \"role2\",\r\n  \"color\": \"color\",\r\n  \"position\": 2\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/roles?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "roles"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "38"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Mar 2026 16:09:53 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Роль успешно создана"
+            }
+          ]
+        },
+        {
+          "name": "Список ролей",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/roles?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "roles"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Список ролей",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/roles?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "roles"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Mar 2026 16:10:36 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": \"aaec4bb5-d83f-436c-8237-6290331cb7fb\",\n        \"name\": \"Admin\",\n        \"color\": null,\n        \"position\": 1,\n        \"members\": [\n            {\n                \"id\": \"5dcdcfd4-899e-48d9-8b84-251fcf246e28\",\n                \"name\": \"username\",\n                \"username\": \"username\",\n                \"status\": \"OFFLINE\",\n                \"photoUrl\": null\n            }\n        ]\n    },\n    {\n        \"id\": \"3696977f-a123-4b58-9ef4-a251f7005c60\",\n        \"name\": \"Member\",\n        \"color\": null,\n        \"position\": 2,\n        \"members\": []\n    },\n    {\n        \"id\": \"efcae0e5-47c2-4625-9502-47baf9544a76\",\n        \"name\": \"role2\",\n        \"color\": \"color\",\n        \"position\": 2,\n        \"members\": []\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Удалить роль",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/roles?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9&roleId=efcae0e5-47c2-4625-9502-47baf9544a76",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "roles"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                },
+                {
+                  "key": "roleId",
+                  "value": "efcae0e5-47c2-4625-9502-47baf9544a76"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Роль успешно удалена",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/roles?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9&roleId=efcae0e5-47c2-4625-9502-47baf9544a76",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "roles"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    },
+                    {
+                      "key": "roleId",
+                      "value": "efcae0e5-47c2-4625-9502-47baf9544a76"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "38"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Mar 2026 16:15:08 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Роль успешно удалена"
+            }
+          ]
+        },
+        {
+          "name": "Выдать роль",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/members/roles?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9&targetUserId=5dcdcfd4-899e-48d9-8b84-251fcf246e28&roleId=efcae0e5-47c2-4625-9502-47baf9544a76",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "members",
+                "roles"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                },
+                {
+                  "key": "targetUserId",
+                  "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28"
+                },
+                {
+                  "key": "roleId",
+                  "value": "efcae0e5-47c2-4625-9502-47baf9544a76"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Роль успешно выдана",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/members/roles?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9&targetUserId=5dcdcfd4-899e-48d9-8b84-251fcf246e28&roleId=efcae0e5-47c2-4625-9502-47baf9544a76",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "members",
+                    "roles"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    },
+                    {
+                      "key": "targetUserId",
+                      "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28"
+                    },
+                    {
+                      "key": "roleId",
+                      "value": "efcae0e5-47c2-4625-9502-47baf9544a76"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "36"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Mar 2026 16:13:13 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Роль успешно выдана"
+            }
+          ]
+        },
+        {
+          "name": "Забрать роль",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/members/roles?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9&targetUserId=5dcdcfd4-899e-48d9-8b84-251fcf246e28&roleId=efcae0e5-47c2-4625-9502-47baf9544a76",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "members",
+                "roles"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                },
+                {
+                  "key": "targetUserId",
+                  "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28"
+                },
+                {
+                  "key": "roleId",
+                  "value": "efcae0e5-47c2-4625-9502-47baf9544a76"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Роль успешно забрана",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/members/roles?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9&targetUserId=5dcdcfd4-899e-48d9-8b84-251fcf246e28&roleId=efcae0e5-47c2-4625-9502-47baf9544a76",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "members",
+                    "roles"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    },
+                    {
+                      "key": "targetUserId",
+                      "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28"
+                    },
+                    {
+                      "key": "roleId",
+                      "value": "efcae0e5-47c2-4625-9502-47baf9544a76"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "38"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Mar 2026 16:14:13 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Роль успешно забрана"
+            }
+          ]
+        },
+        {
+          "name": "Обновить роль",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc1NzQ5MTM0LCJleHAiOjE3NzgzNDExMzQsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.eBF9HRE_brkDszaeDTSlil4IBQ3GPYoQEIqOR7cGwok",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"бла бла бла\",\r\n    \"position\": 2,\r\n    \"color\": null\r\n}\r\n\r\n// каждое поле nullable, по аналогии с запосом на изменение профиля",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/roles?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97&roleId=95216c5d-341b-4889-992b-1c9ba5e6d091",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "roles"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                },
+                {
+                  "key": "roleId",
+                  "value": "95216c5d-341b-4889-992b-1c9ba5e6d091"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Обновить роль",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"бла бла бла\",\r\n    \"position\": 2,\r\n    \"color\": null\r\n}\r\n\r\n// каждое поле nullable, по аналогии с запосом на изменение профиля",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/roles?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97&roleId=95216c5d-341b-4889-992b-1c9ba5e6d091",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "roles"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                    },
+                    {
+                      "key": "roleId",
+                      "value": "95216c5d-341b-4889-992b-1c9ba5e6d091"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 09 Apr 2026 15:58:57 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "42"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Роль успешно обновлена"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Каналы",
+      "item": [
+        {
+          "name": "Создать канал",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"name\",\r\n    \"type\": \"TEXT\",\r\n    \"position\": 1,\r\n    \"max_members\": 99,\r\n    \"is_private\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/channels?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "channels"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Канал успешно создан",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"name\",\r\n    \"type\": \"TEXT\",\r\n    \"position\": 1,\r\n    \"max_members\": 99,\r\n    \"is_private\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/channels?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "channels"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "38"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Mar 2026 18:42:54 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Канал успешно создан"
+            }
+          ]
+        },
+        {
+          "name": "Удалить канал",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/channels?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9&channelId=a764e11e-4a0f-4906-99a9-2d8a57c6aead",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "channels"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                },
+                {
+                  "key": "channelId",
+                  "value": "a764e11e-4a0f-4906-99a9-2d8a57c6aead"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Канал успешно удален",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/channels?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9&channelId=a764e11e-4a0f-4906-99a9-2d8a57c6aead",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "channels"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    },
+                    {
+                      "key": "channelId",
+                      "value": "a764e11e-4a0f-4906-99a9-2d8a57c6aead"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "38"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Mar 2026 18:44:42 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Канал успешно удален"
+            }
+          ]
+        },
+        {
+          "name": "Получить инфо о канале",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "X-User-Id",
+                "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/channels?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9&channelId=a764e11e-4a0f-4906-99a9-2d8a57c6aead",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "channels"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                },
+                {
+                  "key": "channelId",
+                  "value": "a764e11e-4a0f-4906-99a9-2d8a57c6aead",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "Получить инфо о канале",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "X-User-Id",
+                    "value": "5dcdcfd4-899e-48d9-8b84-251fcf246e28",
+                    "type": "text"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/channels?serverId=504d9a73-a5ec-4b32-b496-ea42f8f889e9&channelId=a764e11e-4a0f-4906-99a9-2d8a57c6aead",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "channels"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "504d9a73-a5ec-4b32-b496-ea42f8f889e9"
+                    },
+                    {
+                      "key": "channelId",
+                      "value": "a764e11e-4a0f-4906-99a9-2d8a57c6aead",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Date",
+                  "value": "Tue, 17 Mar 2026 18:44:10 GMT"
+                },
+                {
+                  "key": "Keep-Alive",
+                  "value": "timeout=60"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "{\n    \"id\": \"a764e11e-4a0f-4906-99a9-2d8a57c6aead\",\n    \"name\": \"name\",\n    \"type\": \"TEXT\",\n    \"position\": 1,\n    \"maxMembers\": null,\n    \"isPrivate\": false\n}"
+            }
+          ]
+        },
+        {
+          "name": "Назначить права роли на канал",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImVlY2MzMzgwLWIxNWYtNDkwNi1iYTBlLTAwZGE0OWY1ZWNlMSIsInN1YiI6InVzZXJuYW1lMSIsImlhdCI6MTc3Njg2NDY4OSwiZXhwIjoxNzc5NDU2Njg5LCJpc3MiOiJzcHJpbmctc2VjdXJpdHkifQ.yptXxAYi0kLJrxcE1kK7xPq2vhv5KXeA_R_eif_1MxA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"canRead\": true,\r\n  \"canWrite\": false,\r\n  \"canManage\": false\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/channels/permissions?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97&channelId=6a5addd4-7d91-4666-a1db-c90ee5c295e1&roleId=95216c5d-341b-4889-992b-1c9ba5e6d091",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "channels",
+                "permissions"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                },
+                {
+                  "key": "channelId",
+                  "value": "6a5addd4-7d91-4666-a1db-c90ee5c295e1"
+                },
+                {
+                  "key": "roleId",
+                  "value": "95216c5d-341b-4889-992b-1c9ba5e6d091"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "201 Назначить права роли на канал",
+              "originalRequest": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n  \"canRead\": true,\r\n  \"canWrite\": false,\r\n  \"canManage\": false\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/channels/permissions?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97&channelId=6a5addd4-7d91-4666-a1db-c90ee5c295e1&roleId=95216c5d-341b-4889-992b-1c9ba5e6d091",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "channels",
+                    "permissions"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                    },
+                    {
+                      "key": "channelId",
+                      "value": "6a5addd4-7d91-4666-a1db-c90ee5c295e1"
+                    },
+                    {
+                      "key": "roleId",
+                      "value": "95216c5d-341b-4889-992b-1c9ba5e6d091"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Apr 2026 14:00:17 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "73"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Права роли успешно назначены для канала"
+            }
+          ]
+        },
+        {
+          "name": "Получить права канала",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImVlY2MzMzgwLWIxNWYtNDkwNi1iYTBlLTAwZGE0OWY1ZWNlMSIsInN1YiI6InVzZXJuYW1lMSIsImlhdCI6MTc3Njg2NDY4OSwiZXhwIjoxNzc5NDU2Njg5LCJpc3MiOiJzcHJpbmctc2VjdXJpdHkifQ.yptXxAYi0kLJrxcE1kK7xPq2vhv5KXeA_R_eif_1MxA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/channels/permissions?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97&channelId=6a5addd4-7d91-4666-a1db-c90ee5c295e1",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "channels",
+                "permissions"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                },
+                {
+                  "key": "channelId",
+                  "value": "6a5addd4-7d91-4666-a1db-c90ee5c295e1"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Получить права канала",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/channels/permissions?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97&channelId=6a5addd4-7d91-4666-a1db-c90ee5c295e1",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "channels",
+                    "permissions"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                    },
+                    {
+                      "key": "channelId",
+                      "value": "6a5addd4-7d91-4666-a1db-c90ee5c295e1"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Apr 2026 14:01:36 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                },
+                {
+                  "key": "Transfer-Encoding",
+                  "value": "chunked"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "[\n    {\n        \"id\": \"bb4feef9-d7bf-46cd-9ef4-746eaac83dc1\",\n        \"name\": \"Admin\",\n        \"color\": null,\n        \"position\": 1,\n        \"members\": [\n            {\n                \"id\": \"eecc3380-b15f-4906-ba0e-00da49f5ece1\",\n                \"name\": \"username1\",\n                \"username\": \"username1\",\n                \"status\": \"ONLINE\",\n                \"photoUrl\": null\n            }\n        ]\n    },\n    {\n        \"id\": \"95216c5d-341b-4889-992b-1c9ba5e6d091\",\n        \"name\": \"бла бла бла\",\n        \"color\": null,\n        \"position\": 2,\n        \"members\": [\n            {\n                \"id\": \"eecc3380-b15f-4906-ba0e-00da49f5ece1\",\n                \"name\": \"username1\",\n                \"username\": \"username1\",\n                \"status\": \"ONLINE\",\n                \"photoUrl\": null\n            },\n            {\n                \"id\": \"a8ce4b51-e374-41eb-bc73-1702d8b48e17\",\n                \"name\": \"alex\",\n                \"username\": \"username\",\n                \"status\": \"ONLINE\",\n                \"photoUrl\": null\n            }\n        ]\n    }\n]"
+            }
+          ]
+        },
+        {
+          "name": "Удалить права роли на канал",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImVlY2MzMzgwLWIxNWYtNDkwNi1iYTBlLTAwZGE0OWY1ZWNlMSIsInN1YiI6InVzZXJuYW1lMSIsImlhdCI6MTc3Njg2NDY4OSwiZXhwIjoxNzc5NDU2Njg5LCJpc3MiOiJzcHJpbmctc2VjdXJpdHkifQ.yptXxAYi0kLJrxcE1kK7xPq2vhv5KXeA_R_eif_1MxA",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/channels/permissions?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97&channelId=6a5addd4-7d91-4666-a1db-c90ee5c295e1&roleId=95216c5d-341b-4889-992b-1c9ba5e6d091",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "channels",
+                "permissions"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                },
+                {
+                  "key": "channelId",
+                  "value": "6a5addd4-7d91-4666-a1db-c90ee5c295e1"
+                },
+                {
+                  "key": "roleId",
+                  "value": "95216c5d-341b-4889-992b-1c9ba5e6d091"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Удалить права роли на канал",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/channels/permissions?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97&channelId=6a5addd4-7d91-4666-a1db-c90ee5c295e1&roleId=95216c5d-341b-4889-992b-1c9ba5e6d091",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "channels",
+                    "permissions"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                    },
+                    {
+                      "key": "channelId",
+                      "value": "6a5addd4-7d91-4666-a1db-c90ee5c295e1"
+                    },
+                    {
+                      "key": "roleId",
+                      "value": "95216c5d-341b-4889-992b-1c9ba5e6d091"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Wed, 22 Apr 2026 14:02:31 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "69"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Права роли успешно удалены для канала"
+            }
+          ]
+        },
+        {
+          "name": "Обновить канал",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiREVGQVVMVCIsInVzZXJJZCI6ImE4Y2U0YjUxLWUzNzQtNDFlYi1iYzczLTE3MDJkOGI0OGUxNyIsInN1YiI6InVzZXJuYW1lIiwiaWF0IjoxNzc1NzQ5MTM0LCJleHAiOjE3NzgzNDExMzQsImlzcyI6InNwcmluZy1zZWN1cml0eSJ9.eBF9HRE_brkDszaeDTSlil4IBQ3GPYoQEIqOR7cGwok",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"name\": \"name\",\r\n    \"type\": \"VOICE\",\r\n    \"position\": null,\r\n    \"maxMembers\": 5,\r\n    \"isPrivate\": null\r\n}\r\n\r\n// каждое поле nullable, по аналогии с запосом на изменение профиля\r\n\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseURL}}{{server-service}}/servers/channels?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97&channelId=6a5addd4-7d91-4666-a1db-c90ee5c295e1",
+              "host": [
+                "{{baseURL}}{{server-service}}"
+              ],
+              "path": [
+                "servers",
+                "channels"
+              ],
+              "query": [
+                {
+                  "key": "serverId",
+                  "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                },
+                {
+                  "key": "channelId",
+                  "value": "6a5addd4-7d91-4666-a1db-c90ee5c295e1",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "name": "200 Обновить канал",
+              "originalRequest": {
+                "method": "PATCH",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"name\": \"name\",\r\n    \"type\": \"VOICE\",\r\n    \"position\": null,\r\n    \"maxMembers\": 5,\r\n    \"isPrivate\": null\r\n}\r\n\r\n// каждое поле nullable, по аналогии с запосом на изменение профиля\r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseURL}}{{server-service}}/servers/channels?serverId=6afa0ca5-bd6f-4364-b843-3eb675530a97&channelId=6a5addd4-7d91-4666-a1db-c90ee5c295e1",
+                  "host": [
+                    "{{baseURL}}{{server-service}}"
+                  ],
+                  "path": [
+                    "servers",
+                    "channels"
+                  ],
+                  "query": [
+                    {
+                      "key": "serverId",
+                      "value": "6afa0ca5-bd6f-4364-b843-3eb675530a97"
+                    },
+                    {
+                      "key": "channelId",
+                      "value": "6a5addd4-7d91-4666-a1db-c90ee5c295e1",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": null,
+              "header": [
+                {
+                  "key": "Server",
+                  "value": "openresty/1.27.1.2"
+                },
+                {
+                  "key": "Date",
+                  "value": "Thu, 09 Apr 2026 16:31:01 GMT"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain;charset=UTF-8"
+                },
+                {
+                  "key": "Content-Length",
+                  "value": "42"
+                },
+                {
+                  "key": "Connection",
+                  "value": "keep-alive"
+                }
+              ],
+              "cookie": [],
+              "body": "Канал успешно обновлен"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
