@@ -90,6 +90,13 @@ class FriendshipService(
                 }
             }
 
+            friendshipRepository.findFriendshipBetweenUsers(user.id!!, targetUser!!.id!!). also { friendship ->
+                if (friendship != null) {
+                    logger.error("Friendship already exists between ${user.id} and ${targetUser.id}")
+                    return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Запрос дружбы уже существует")
+                }
+            }
+
             friendshipRepository.save(
                 Friendship(
                     requesterId = user.id!!,
