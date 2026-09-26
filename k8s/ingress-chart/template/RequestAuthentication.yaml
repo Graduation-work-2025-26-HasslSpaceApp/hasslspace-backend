@@ -1,0 +1,21 @@
+apiVersion: security.istio.io/v1beta1
+kind: RequestAuthentication
+metadata:
+  name: hasslspace-jwt-auth
+  namespace: default
+spec:
+  selector:
+    matchLabels:
+      istio: ingressgateway  # применяем к ingress gateway
+  jwtRules:
+    - issuer: "hasslspace"
+      # HMAC симметричный ключ
+      secretKey:
+        name: hasslspace-jwt-secret
+        key: secret
+      # Извлекаем userId из JWT в заголовок
+      outputClaimToHeaders:
+        - header: "X-User-Id"
+          claim: "userId"
+      # Прокидываем оригинальный токен дальше (опционально)
+      forwardOriginalToken: true

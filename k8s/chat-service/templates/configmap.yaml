@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.name }}-config
+data:
+  DEV_ENV_DB_NAME: {{ .Values.env.DB_NAME | quote }}
+  DEV_ENV_DB_USER: {{ .Values.env.DB_USER | quote }}
+  DEV_ENV_HOST: {{ .Values.env.DB_HOST | quote }}
+
+  DEV_ENV_SERVER_PORT: "{{ .Values.service.port }}"
+
+  DEV_ENV_S3_BUCKET: {{ .Values.env.S3_BUCKET | quote }}
+  DEV_ENV_S3_ENDPOINT: {{ .Values.env.S3_ENDPOINT | quote }}
+  DEV_ENV_S3_REGION: {{ .Values.env.S3_REGION | quote }}
+
+  DEV_ENV_CENTRIFUGO_HOST: {{ .Values.env.CENTRIFUGO_HOST | quote }}
+  DEV_ENV_CENTRIFUGO_PORT: {{ .Values.env.CENTRIFUGO_PORT | quote }}

@@ -1,0 +1,31 @@
+name: chat-service
+
+replicaCount: 1
+
+image:
+  repository: whomustnotbenamed/hasslspace
+  tag: chat-service-1.1.0-arm64
+  pullPolicy: IfNotPresent
+
+service:
+  port: 8083
+
+env:
+  DB_HOST: host.minikube.internal
+  DB_PORT: "5432"
+  DB_NAME: ""
+  DB_USER: ""
+  DB_PASSWORD: ""
+
+  JWT_SECRET: ""
+  JWT_EXPIRATION: ""
+
+  S3_BUCKET: s3-hasslspace
+  S3_ENDPOINT: https://storage.yandexcloud.net
+  S3_REGION: ru-central1
+  S3_ACCESS_KEY: ""
+  S3_SECRET_KEY: ""
+
+  CENTRIFUGO_HOST: host.minikube.internal
+  CENTRIFUGO_PORT: "8000"
+  CENTRIFUGO_API_KEY: ""
